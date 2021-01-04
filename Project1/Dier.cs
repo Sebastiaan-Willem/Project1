@@ -25,9 +25,11 @@ namespace Project1
         
         public void VoegDierToe(Dier dier)
         {
+            ID++;
             Console.Clear();
-
             List<string> newDier = new List<string>();
+
+            newDier.Add(ID.ToString());
             Console.WriteLine("Om welk dier gaat het?");
             newDier.Add(Console.ReadLine());
             Console.WriteLine("Geef het dier een naam:");
@@ -36,9 +38,12 @@ namespace Project1
             newDier.Add(Console.ReadLine());
             Console.WriteLine("Geef de geboortedatum in: DD/MM/YYYY");
             newDier.Add(Console.ReadLine());
+            Console.WriteLine("Wordt het dier ondergebracht in ons aquarium, het safaripark, het vogelparadijs of de kinderboerderij?");
+            newDier.Add(Console.ReadLine());
             Console.WriteLine("Geef aan wat het dier dagelijks wenst te eten:");
             newDier.Add("[" + Console.ReadLine() + "]");
-            Console.WriteLine("Wordt het dier ondergebracht in ons aquarium, het safaripark, het vogelparadijs of de kinderboerderij?");
+            
+
 
             fileReaderWriter.WriteDataToFile(newDier.ToArray());
 

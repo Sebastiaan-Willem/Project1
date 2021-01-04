@@ -34,6 +34,7 @@ namespace Project1
 
                     case ConsoleKey.F2:
                         dier.PrintDierenLijst(fileReaderWriter.ReadDataFromFile(fileReaderWriter.PATH_LIST));
+                        Console.ReadLine();
                         break;
 
                     case ConsoleKey.F3:
