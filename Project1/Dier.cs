@@ -4,12 +4,14 @@ using System.Text;
 
 namespace Project1
 {
+
     class Dier
     {
         //------------------------------------------------------------
         //MVP
         //------------------------------------------------------------
 
+        FileReaderWriter fileReaderWriter = new FileReaderWriter();
 
         public int ID { get; set; }
         public string Name { get; set; }
@@ -25,19 +27,20 @@ namespace Project1
         {
             Console.Clear();
 
-            List<string> newRecipe = new List<string>();
-            Console.WriteLine("Name?");
-            newRecipe.Add(Console.ReadLine());
-            Console.WriteLine("Price (in euro)?");
-            newRecipe.Add(Console.ReadLine());
-            Console.WriteLine("Size (in cm)?");
-            newRecipe.Add(Console.ReadLine());
-            Console.WriteLine("Vegetarian?");
-            newRecipe.Add(Console.ReadLine());
-            Console.WriteLine("Ingredients?");
-            newRecipe.Add("[" + Console.ReadLine() + "]");
+            List<string> newDier = new List<string>();
+            Console.WriteLine("Om welk dier gaat het?");
+            newDier.Add(Console.ReadLine());
+            Console.WriteLine("Geef het dier een naam:");
+            newDier.Add(Console.ReadLine());
+            Console.WriteLine("Wat is het geslacht? (M/V/X)");
+            newDier.Add(Console.ReadLine());
+            Console.WriteLine("Geef de geboortedatum in: DD/MM/YYYY");
+            newDier.Add(Console.ReadLine());
+            Console.WriteLine("Geef aan wat het dier dagelijks wenst te eten:");
+            newDier.Add("[" + Console.ReadLine() + "]");
+            Console.WriteLine("Wordt het dier ondergebracht in ons aquarium, het safaripark, het vogelparadijs of de kinderboerderij?");
 
-            readerWriter.WriteDataToFile(newRecipe.ToArray(), PATH_RECP);
+            fileReaderWriter.WriteDataToFile(newDier.ToArray());
 
             dierenLijst.Add(dier);
         }
