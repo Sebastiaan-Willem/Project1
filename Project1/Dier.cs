@@ -12,8 +12,13 @@ namespace Project1
         //------------------------------------------------------------
 
         FileReaderWriter fileReaderWriter = new FileReaderWriter();
+        private int id;
 
-        public int ID { get; set; }
+        public int ID
+        {
+            get { return id; }
+            set { id = value; }
+        }
         public string Name { get; set; }
         public int Age { get; set; }
         public enum Gender { Female = 1, Male, Hermaphrodite, Asexual }
@@ -23,9 +28,16 @@ namespace Project1
         List<Dier> dierenLijst = new List<Dier>();
 
         
+
         public void VoegDierToe(Dier dier)
         {
+            
             ID++;
+            //OPM: ID werkt nog niet met optellen als programma afgesloten is, evt lezen van bestand
+
+
+            //opdracht: foutmeldingen rest
+
             Console.Clear();
             List<string> newDier = new List<string>();
 
@@ -35,7 +47,6 @@ namespace Project1
             Console.WriteLine("Geef het dier een naam:");
             newDier.Add(Console.ReadLine());
             
-
             char temp;
             do
             {
