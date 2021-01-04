@@ -6,14 +6,15 @@ namespace Project1
     {
         static void Main(string[] args)
         {
-
-            Menu menu = new Menu();
-            menu.PrintMenu();
-
             string PATH_LIST = $"C:\\Users\\{Environment.UserName}\\source\\repos\\Project1\\Project1\\lijstDieren.txt";
             FileManager fileManager = new FileManager();
             fileManager.CreateFile(PATH_LIST);
 
+
+            Menu menu = new Menu();
+            menu.PrintMenu();
+
+            
 
             Console.WriteLine("Welkom in onze Dierentuin.");
 
