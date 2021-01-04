@@ -6,6 +6,10 @@ namespace Project1
 {
     class Menu
     {
+
+        Dier dier = new Dier();
+        FileReaderWriter fileReaderWriter = new FileReaderWriter();
+        
         public void PrintMenu()
         {
             
@@ -25,11 +29,11 @@ namespace Project1
                 switch (input.Key)
                 {
                     case ConsoleKey.F1:
-
+                        dier.VoegDierToe(dier);
                         break;
 
                     case ConsoleKey.F2:
-
+                        dier.PrintDierenLijst();
                         break;
 
                     case ConsoleKey.F3:
