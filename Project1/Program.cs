@@ -6,9 +6,8 @@ namespace Project1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welkom in onze Dierentuin.");
-            Console.WriteLine("test");
-            Console.WriteLine("test nummer 2");
+            Menu menu = new Menu();
+            menu.PrintMenu();
         }
     }
 }
