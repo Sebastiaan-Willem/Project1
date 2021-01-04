@@ -8,6 +8,7 @@ namespace Project1
         {
             Console.WriteLine("Welkom in onze Dierentuin.");
             Console.WriteLine("test");
+            Console.WriteLine("test nummer 2");
         }
     }
 }
