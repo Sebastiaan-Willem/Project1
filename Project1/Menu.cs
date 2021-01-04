@@ -33,7 +33,7 @@ namespace Project1
                         break;
 
                     case ConsoleKey.F2:
-                        dier.PrintDierenLijst();
+                        dier.PrintDierenLijst(fileReaderWriter.ReadDataFromFile(fileReaderWriter.PATH_LIST));
                         break;
 
                     case ConsoleKey.F3:

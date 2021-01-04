@@ -7,6 +7,15 @@ namespace Project1
 {
     class FileReaderWriter
     {
+        private string pATH_LIST = $"C:\\Users\\{Environment.UserName}\\source\\repos\\Project1\\Project1\\lijstDieren.txt";
+
+        public string PATH_LIST
+        {
+            get { return pATH_LIST; }
+           
+        }
+
+        
         string dateTime = Convert.ToString(System.DateTime.Now);
 
                 
