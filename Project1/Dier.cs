@@ -34,8 +34,24 @@ namespace Project1
             newDier.Add(Console.ReadLine());
             Console.WriteLine("Geef het dier een naam:");
             newDier.Add(Console.ReadLine());
-            Console.WriteLine("Wat is het geslacht? (M/V/X)");
-            newDier.Add(Console.ReadLine());
+            
+
+            char temp;
+            do
+            {
+                Console.WriteLine("Wat is het geslacht? (M/V/X)");
+                temp = Convert.ToChar(Console.ReadLine());
+                if ((temp == 'M') || (temp == 'V') || (temp == 'X'))
+                {
+                    newDier.Add(temp.ToString());
+                }
+                else
+                {
+                    Console.WriteLine("De gegeven input is incorrect, probeer opnieuw:");
+                }
+
+            } while (!(temp == 'M' || temp == 'V' || temp == 'X')); 
+
             Console.WriteLine("Geef de geboortedatum in: DD/MM/YYYY");
             newDier.Add(Console.ReadLine());
             Console.WriteLine("Wordt het dier ondergebracht in ons aquarium, het safaripark, het vogelparadijs of de kinderboerderij?");
