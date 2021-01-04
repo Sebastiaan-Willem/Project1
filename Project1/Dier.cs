@@ -52,10 +52,22 @@ namespace Project1
 
         public void PrintDierenLijst(List<string> dieren)
         {
-            foreach (string dier in dieren)
+            if(!(dieren.Count == 0))
             {
-                Console.WriteLine(dier);
+                foreach (string dier in dieren)
+                {
+                    Console.WriteLine(dier);
+                }
             }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Er zitten momenteel geen dieren in deze lijst.");
+                System.Threading.Thread.Sleep(3000);
+                Console.ResetColor();
+            }
+
+            
         }
 
 

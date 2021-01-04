@@ -44,6 +44,11 @@ namespace Project1
 
 
                     default:
+                        Console.ForegroundColor = ConsoleColor.Red;
+
+                        Console.WriteLine("\n\n-- You entered a wrong key! --");
+                        System.Threading.Thread.Sleep(2000);
+                        Console.ResetColor();
                         break;
                 }
 
