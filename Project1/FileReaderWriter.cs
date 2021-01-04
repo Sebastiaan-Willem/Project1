@@ -26,9 +26,9 @@ namespace Project1
 
         }
 
-        public void WriteDataToFile(string[] lines, string path)
+        public void WriteDataToFile(string[] lines)
         {
-            using StreamWriter writer = new StreamWriter(path, true); //true om nieuwe tekst toe te voegen ipv overschrijven.
+            using StreamWriter writer = new StreamWriter(pATH_LIST, true); //true om nieuwe tekst toe te voegen ipv overschrijven.
             writer.WriteLine();
             foreach (string line in lines)
             {
@@ -37,7 +37,19 @@ namespace Project1
             }
 
 
-        }   
+        }
+        public void WriteDataToFile(string[] lines, string path)
+        {
+            using StreamWriter writer = new StreamWriter(path, true); //true om nieuwe tekst toe te voegen ipv overschrijven.
+            writer.WriteLine();
+            foreach (string line in lines)
+            {
+                writer.Write($"{line} ");
+
+            }
+
+
+        }
 
         public List<string> ReadDataFromFile(string path)
         {
