@@ -6,8 +6,6 @@ namespace Project1
 {
     class Dier
     {
-        //DIT IS EEN TEST
-
         //------------------------------------------------------------
         //MVP
         //------------------------------------------------------------
@@ -16,7 +14,7 @@ namespace Project1
         public int ID { get; set; }
         public string Name { get; set; }
         public int Age { get; set; }
-        //public enum Gender { get; set; }
+        public enum Gender { Female = 1, Male, Hermaphrodite, Asexual }
         public string[] Diet { get; set; }
         public string Habitat { get; set; }
 
