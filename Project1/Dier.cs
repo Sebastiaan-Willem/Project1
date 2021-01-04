@@ -23,6 +23,22 @@ namespace Project1
         
         public void VoegDierToe(Dier dier)
         {
+            Console.Clear();
+
+            List<string> newRecipe = new List<string>();
+            Console.WriteLine("Name?");
+            newRecipe.Add(Console.ReadLine());
+            Console.WriteLine("Price (in euro)?");
+            newRecipe.Add(Console.ReadLine());
+            Console.WriteLine("Size (in cm)?");
+            newRecipe.Add(Console.ReadLine());
+            Console.WriteLine("Vegetarian?");
+            newRecipe.Add(Console.ReadLine());
+            Console.WriteLine("Ingredients?");
+            newRecipe.Add("[" + Console.ReadLine() + "]");
+
+            readerWriter.WriteDataToFile(newRecipe.ToArray(), PATH_RECP);
+
             dierenLijst.Add(dier);
         }
 
