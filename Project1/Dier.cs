@@ -45,9 +45,9 @@ namespace Project1
             dierenLijst.Add(dier);
         }
 
-        public void PrintDierenLijst()
+        public void PrintDierenLijst(List<string> dieren)
         {
-            foreach (Dier dier in dierenLijst)
+            foreach (string dier in dieren)
             {
                 Console.WriteLine(dier);
             }
