@@ -24,7 +24,7 @@ namespace Project1
         public string Gender { get; set; }
         //public enum Gender { Male = 1, Female, Other }
         public string[] Diet { get; set; }
-        public enum Habitat { A = 1, S, V, K }
+        public enum Habitat { aquarium = 1, safaripark, vogelparadijs, kinderboerderij }
 
         List<Dier> dierenLijst = new List<Dier>();
 
