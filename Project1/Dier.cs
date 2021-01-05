@@ -23,7 +23,7 @@ namespace Project1
         public int Age { get; set; }
         //public enum Gender { Male = 1, Female, Other }
         public string[] Diet { get; set; }
-        public enum Habitat { A = 1, S, V, K }
+        public enum Habitat { aquarium = 1, safaripark, vogelparadijs, kinderboerderij }
 
         List<Dier> dierenLijst = new List<Dier>();
 
@@ -102,7 +102,7 @@ namespace Project1
 
         }
 
-        public void BerekenLeeftijd();
+        public void BerekenLeeftijd()
         {
         //(EndDate.Date - StartDate.Date).Days
             //EndDate is dan huidige dag met:
