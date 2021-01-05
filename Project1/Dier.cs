@@ -211,7 +211,7 @@ namespace Project1
             string newData = Console.ReadLine();
             System.Threading.Thread.Sleep(500);
             fileReaderWriter.EditData(tempID, oldData, newData);
-            PrintDierMetId(fileReaderWriter.ReadDataLineFromFile(Convert.ToInt32(Console.ReadLine())));
+            PrintDierMetId(fileReaderWriter.ReadDataLineFromFile(tempID));
         }
 
         public void VerwijderDier()
