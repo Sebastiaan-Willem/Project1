@@ -17,11 +17,11 @@ namespace Project1
         public int ID
         {
             get { return id; }
-            set { id = value; }
+            set { id = fileReaderWriter.ReadDataFromFile(fileReaderWriter.PATH_LIST).Count; }
         }
         public string Name { get; set; }
         public int Age { get; set; }
-        public enum Gender { Male = 1, Female, Other }
+        //public enum Gender { Male = 1, Female, Other }
         public string[] Diet { get; set; }
         public string Habitat { get; set; }
 
