@@ -1,4 +1,3 @@
- 
 Giraf Bart M 01/01/2010 [voedsel]  
 Panda Bessy V 02/12/2019 [bamboe]  
 0 eekhoorn Jimmy X 28/11/2020 safaripark [noten]  
@@ -26,4 +25,3 @@ Panda Bessy V 02/12/2019 [bamboe]
 26 ZEEEGEL Ziem V 06/04/2019 1 Aquarium [plankton??]  
 27 GIRAF Giel V 01/02/2003 17 Safaripark [bladeren]  
 28 CHIMPANSEE Ricky M 02/05/2017 3 Safaripark [bananen, nootjes]  
-13 Ezel Sebastiaan M 01/01/2020 kinderboerderij [groenten, fruit, hooi, gras] 13 Ezel Sebastiaan M 01/01/2020 kinderboerderij [groenten, fruit, hooi, gras] 13 Ezel Sebastiaan M 01/01/2020 kinderboerderij [groenten, fruit, hooi, gras]  
