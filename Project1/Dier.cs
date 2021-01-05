@@ -31,12 +31,7 @@ namespace Project1
 
         List<Dier> dierenLijst = new List<Dier>();
 
-        //bedoeling: van elk dier een object maken
-        //deze lijst hierboven: gwn een lijst van alle dieren, kan je in principe zelf uittypen, dan die objecten rechtstreeks
-        //aanspreken en gebruiken: bv: new dier: koe maken, dan zin "Bessy is een {koe} en is {leeftijd} jaar oud,... ->
-        //zo properties gebruiken
-
-
+      
 
         public void VoegDierToe()
         {
