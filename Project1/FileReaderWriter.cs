@@ -38,6 +38,7 @@ namespace Project1
 
 
         }
+
         public void WriteDataToFile(string[] lines, string path)
         {
             using StreamWriter writer = new StreamWriter(path, true); //true om nieuwe tekst toe te voegen ipv overschrijven.
@@ -49,6 +50,23 @@ namespace Project1
             }
 
 
+        }
+
+        public void EditData(string old, string replace)
+        {
+            
+            StreamReader reader = new StreamReader(PATH_LIST);
+            //eventueel editen op een specifieke regel op basis van ID?
+            string input = reader.ReadToEnd();
+
+            using (StreamWriter writer = new StreamWriter(PATH_LIST, true))
+            {
+                {
+                    string output = input.Replace(old, replace);
+                    writer.Write(output);
+                }
+                writer.Close();
+            }
         }
 
         public List<string> ReadDataFromFile(string path)

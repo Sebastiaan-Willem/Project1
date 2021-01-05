@@ -21,6 +21,7 @@ namespace Project1
         }
         public string Name { get; set; }
         public int Age { get; set; }
+        public string Gender { get; set; }
         //public enum Gender { Male = 1, Female, Other }
         public string[] Diet { get; set; }
         public enum Habitat { aquarium = 1, safaripark, vogelparadijs, kinderboerderij }
@@ -33,8 +34,6 @@ namespace Project1
         {
 
             ID++;
-            //OPM: ID werkt nog niet met optellen als programma afgesloten is, evt lezen van bestand
-
             //eventueel eerst dier aanmaken via constructor met ingegeven parameters en dan hele dier object meegeven om te printen in readerWriter
 
             //opdracht: foutmeldingen rest
@@ -121,6 +120,12 @@ namespace Project1
 
         }
 
+        public void PrintDierMetId()
+        {
+            //should read 15th line, aka, ID= 15
+            //string line = File.ReadLines(FileName).Skip(14).Take(1).First();
+        }
+
 
 
     //------------------------------------------------------------
@@ -134,9 +139,10 @@ namespace Project1
         public double Lengte { get; set; }
         public DateTime InschrijvingsDatum { get; set; }
 
-        public void WijzigData()
+        public void WijzigData(string oldData, string newData)
         {
             //TODO
+            fileReaderWriter.EditData(oldData, newData);
         }
 
         public void VerwijderDier(Dier dier)

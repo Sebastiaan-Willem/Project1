@@ -16,7 +16,7 @@ namespace Project1
 
             
 
-            Console.WriteLine("Welkom in onze Dierentuin.");
+           
 
         }
     }
