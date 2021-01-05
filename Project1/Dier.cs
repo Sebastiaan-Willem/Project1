@@ -42,11 +42,11 @@ namespace Project1
             newDier.Add(dier.ID.ToString());
 
             Console.WriteLine("Om welk dier gaat het?");
-            dier.Soort = Console.ReadLine();
+            dier.Soort = Console.ReadLine().ToUpper();
             newDier.Add(dier.Soort);
 
             Console.WriteLine("Geef het dier een naam:");
-            dier.Name = Console.ReadLine();
+            dier.Name = Console.ReadLine().ToUpper();
             newDier.Add(dier.Name);
 
 
@@ -54,7 +54,7 @@ namespace Project1
             do
             {
                 Console.WriteLine("Wat is het geslacht? (M/V/X)");
-                temp = Convert.ToChar(Console.ReadLine());
+                temp = Convert.ToChar(Console.ReadLine().ToUpper());
                 if ((temp == 'M') || (temp == 'V') || (temp == 'X'))
                 {
                     dier.Gender = temp;
@@ -103,8 +103,6 @@ namespace Project1
                 Console.WriteLine("--Gelieve een cijfer in te geven.--");
                 System.Threading.Thread.Sleep(2000);
                 Console.ResetColor();
-
-
             }
             } while (test == false);
 
