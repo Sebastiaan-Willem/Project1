@@ -18,7 +18,7 @@ namespace Project1
         public int ID
         {
             get { return id; }
-            set { id = fileReaderWriter.ReadDataFromFile(fileReaderWriter.PATH_LIST).Count; }
+            set { id = value; }
         }
         public string Soort { get; set; }
         public string Name { get; set; }
@@ -43,8 +43,8 @@ namespace Project1
 
             Console.Clear();
 
-            dier.ID++;
-            newDier.Add(ID.ToString());
+            dier.ID = fileReaderWriter.ReadDataFromFile(fileReaderWriter.PATH_LIST).Count + 1;
+            newDier.Add(dier.ID.ToString());
 
             Console.WriteLine("Om welk dier gaat het?");
             dier.Soort = Console.ReadLine();
