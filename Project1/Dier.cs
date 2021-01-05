@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Project1
 {
+    public enum Habitats { aquarium = 1, safaripark, vogelparadijs, kinderboerderij }
 
     class Dier
     {
@@ -19,33 +20,39 @@ namespace Project1
             get { return id; }
             set { id = fileReaderWriter.ReadDataFromFile(fileReaderWriter.PATH_LIST).Count; }
         }
+        public string Soort { get; set; }
         public string Name { get; set; }
         public int Age { get; set; }
-        public string Gender { get; set; }
+        public char Gender { get; set; }
         //public enum Gender { Male = 1, Female, Other }
         public string[] Diet { get; set; }
-        public enum Habitat { aquarium = 1, safaripark, vogelparadijs, kinderboerderij }
+        
+        public string Habitat { get; set; }
 
         List<Dier> dierenLijst = new List<Dier>();
 
+        
 
-
-        public void VoegDierToe(Dier dier)
+        public void VoegDierToe()
         {
-
-            ID++;
-            //eventueel eerst dier aanmaken via constructor met ingegeven parameters en dan hele dier object meegeven om te printen in readerWriter
-
+            Dier dier = new Dier();
+            List<string> newDier = new List<string>();
+            
             //opdracht: foutmeldingen rest
 
             Console.Clear();
-            List<string> newDier = new List<string>();
 
+            dier.ID++;
             newDier.Add(ID.ToString());
+
             Console.WriteLine("Om welk dier gaat het?");
-            newDier.Add(Console.ReadLine());
+            dier.Soort = Console.ReadLine();
+            newDier.Add(dier.Soort);
+
             Console.WriteLine("Geef het dier een naam:");
-            newDier.Add(Console.ReadLine());
+            dier.Name = Console.ReadLine();
+            newDier.Add(dier.Name);
+
 
             char temp;
             do
@@ -54,7 +61,8 @@ namespace Project1
                 temp = Convert.ToChar(Console.ReadLine());
                 if ((temp == 'M') || (temp == 'V') || (temp == 'X'))
                 {
-                    newDier.Add(temp.ToString());
+                    dier.Gender = temp;
+                    newDier.Add(dier.Gender.ToString());
                 }
                 else
                 {
@@ -65,12 +73,13 @@ namespace Project1
 
             //string formatting voor data bekijken?
             Console.WriteLine("Geef de geboortedatum in: DD/MM/YYYY");
-            newDier.Add(Console.ReadLine());
+            dier.Age = BerekenLeeftijd(Console.ReadLine());
+            newDier.Add(dier.Age.ToString());
 
+            Console.WriteLine("Wordt het dier ondergebracht in ons aquarium (1), het safaripark(2), het vogelparadijs(3) of de kinderboerderij(4)?");
+            dier.Habitat = Habitats.aquarium.ToString();
+            newDier.Add(dier.Habitat);
 
-
-            Console.WriteLine("Wordt het dier ondergebracht in ons aquarium (A), het safaripark(S), het vogelparadijs(V) of de kinderboerderij(K)?");
-            newDier.Add(Console.ReadLine());
             Console.WriteLine("Geef aan wat het dier dagelijks wenst te eten:");
             newDier.Add("[" + Console.ReadLine() + "]");
 
@@ -117,23 +126,23 @@ namespace Project1
 
         }
 
-        public void BerekenLeeftijd()
+        public int BerekenLeeftijd(string geboorteDatum)
         {
             //(EndDate.Date - StartDate.Date).Days
-                //EndDate is dan huidige dag met:
-                //gevonden: DateTime.Now.ToString("MM/dd/yyyy")
-                //proberen met: DateTime.Now.ToString("dd/MM/yyyy")
-                //StartDate gelijkstellen aan geboortedatum
+            //EndDate is dan huidige dag met:
+            //gevonden: DateTime.Now.ToString("MM/dd/yyyy")
+            //proberen met: DateTime.Now.ToString("dd/MM/yyyy")
+            //StartDate gelijkstellen aan geboortedatum
 
-                //while (MyReader.Read())
-                //{
-                //    TextBox1.Text = Convert.ToDateTime(MyReader["DateField"]).ToString("dd/MM/yyyy");
-                //}
+            //while (MyReader.Read())
+            //{
+            //    TextBox1.Text = Convert.ToDateTime(MyReader["DateField"]).ToString("dd/MM/yyyy");
+            //}
 
             //string today = Convert.DateTime.Today;
             //int age = today.Year - birthdate.Year;
             //if (birthdate.date > today.AddYears(-age)) age--;
-
+            return Age;
         }
 
         

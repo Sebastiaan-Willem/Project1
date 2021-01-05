@@ -10,14 +10,8 @@ namespace Project1
             FileManager fileManager = new FileManager();
             fileManager.CreateFile(PATH_LIST);
 
-
             Menu menu = new Menu();
             menu.PrintMenu();
-
-            
-
-           
-
         }
     }
 }
