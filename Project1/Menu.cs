@@ -31,20 +31,27 @@ namespace Project1
                 switch (input.Key)
                 {
                     case ConsoleKey.A:
+                        Console.Clear();
                         dier.VoegDierToe();
                         break;
 
                     case ConsoleKey.B:
+                        Console.Clear();
                         dier.PrintDierenLijst(fileReaderWriter.ReadDataFromFile(fileReaderWriter.PATH_LIST));
+                        Console.WriteLine("Duw op Enter om terug te keren naar het menu.");
                         Console.ReadLine();
                         break;
                     case ConsoleKey.C:
+                        Console.Clear();
                         Console.WriteLine("Geef het ID van het dier dat u wenst op te vragen.");
                         dier.PrintDierMetId(fileReaderWriter.ReadDataLineFromFile(Convert.ToInt32(Console.ReadLine())));
+                        Console.WriteLine("Duw op Enter om terug te keren naar het menu.");
                         Console.ReadLine();
+                       
                         break;
                     case ConsoleKey.D:
                         dier.PrintDierenLijst(fileReaderWriter.ReadDataFromFile(fileReaderWriter.PATH_LIST));
+                        Console.WriteLine("Duw op Enter om terug te keren naar het menu.");
                         Console.ReadLine();
                         break;
 

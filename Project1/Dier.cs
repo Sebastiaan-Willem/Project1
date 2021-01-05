@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Project1
 {
-    public enum Habitats { aquarium = 1, safaripark, vogelparadijs, kinderboerderij }
+    public enum Habitats { Aquarium = 1, Safaripark, Vogelparadijs, Kinderboerderij }
 
     class Dier
     {
@@ -25,7 +25,6 @@ namespace Project1
         public DateTime DateOfBirth { get; set; }
         public int Leeftijd { get; set; }
         public char Gender { get; set; }
-        //public enum Gender { Male = 1, Female, Other }
         public string Diet { get; set; }
         
         public string Habitat { get; set; }
@@ -38,10 +37,6 @@ namespace Project1
         {
             Dier dier = new Dier();
             List<string> newDier = new List<string>();
-            
-            //opdracht: foutmeldingen rest
-
-            Console.Clear();
 
             dier.ID = fileReaderWriter.ReadDataFromFile(fileReaderWriter.PATH_LIST).Count + 1;
             newDier.Add(dier.ID.ToString());
@@ -80,8 +75,10 @@ namespace Project1
             newDier.Add(dier.Leeftijd.ToString());
 
             Console.WriteLine("Wordt het dier ondergebracht in ons aquarium (1), het safaripark(2), het vogelparadijs(3) of de kinderboerderij(4)?");
-            dier.Habitat = Habitats.aquarium.ToString();
+            dier.Habitat = Habitats.Aquarium.ToString();
             newDier.Add(dier.Habitat);
+
+            //hier moet nog input gefixt worden en gelinkt aan enum waarde
 
             Console.WriteLine("Geef aan wat het dier dagelijks wenst te eten:");
             dier.Diet = Console.ReadLine();
@@ -132,23 +129,6 @@ namespace Project1
 
         public int BerekenLeeftijd(DateTime geboorteDatum)
         {
-            //(EndDate.Date - StartDate.Date).Days
-                //EndDate is dan huidige dag met:
-                //gevonden: DateTime.Now.ToString("MM/dd/yyyy")
-                //proberen met: DateTime.Now.ToString("dd/MM/yyyy")
-                //StartDate gelijkstellen aan geboortedatum
-
-            //while (MyReader.Read())
-            //{
-            //    TextBox1.Text = Convert.ToDateTime(MyReader["DateField"]).ToString("dd/MM/yyyy");
-            //}
-
-            //string today = Convert.DateTime.Today;
-            //int age = today.Year - birthdate.Year;
-            //if (birthdate.date > today.AddYears(-age)) age--;
-
-            //   constructor: DateTime justDate = new DateTime(2002, 10, 18);
-
             DateTime today = DateTime.Today;
             DateTime birthdate = geboorteDatum;
             int age = today.Year - birthdate.Year;
