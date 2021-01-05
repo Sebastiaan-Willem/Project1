@@ -143,6 +143,12 @@ namespace Project1
             //int age = today.Year - birthdate.Year;
             //if (birthdate.date > today.AddYears(-age)) age--;
 
+            //   constructor: DateTime justDate = new DateTime(2002, 10, 18);
+
+            DateTime today = DateTime.Today;
+            DateTime birthdate = 
+            
+                //int age = today.Year - birthdate.Year;
         }
 
         
