@@ -21,7 +21,7 @@ namespace Project1
         }
         public string Name { get; set; }
         public int Age { get; set; }
-        public enum Gender { Female = 1, Male, Hermaphrodite, Asexual }
+        public enum Gender { Male = 1, Female, Other }
         public string[] Diet { get; set; }
         public string Habitat { get; set; }
 
@@ -35,6 +35,7 @@ namespace Project1
             ID++;
             //OPM: ID werkt nog niet met optellen als programma afgesloten is, evt lezen van bestand
 
+            //eventueel eerst dier aanmaken via constructor met ingegeven parameters en dan hele dier object meegeven om te printen in readerWriter
 
             //opdracht: foutmeldingen rest
 
@@ -63,8 +64,12 @@ namespace Project1
 
             } while (!(temp == 'M' || temp == 'V' || temp == 'X')); 
 
+            //string formatting voor data bekijken?
             Console.WriteLine("Geef de geboortedatum in: DD/MM/YYYY");
             newDier.Add(Console.ReadLine());
+
+
+            //eventueel enum voor habitat
             Console.WriteLine("Wordt het dier ondergebracht in ons aquarium, het safaripark, het vogelparadijs of de kinderboerderij?");
             newDier.Add(Console.ReadLine());
             Console.WriteLine("Geef aan wat het dier dagelijks wenst te eten:");
