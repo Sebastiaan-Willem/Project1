@@ -22,7 +22,7 @@ namespace Project1
         }
         public string Soort { get; set; }
         public string Name { get; set; }
-        public int Age { get; set; }
+        public DateTime DateOfBirth { get; set; }
         public char Gender { get; set; }
         //public enum Gender { Male = 1, Female, Other }
         public string Diet { get; set; }
@@ -73,8 +73,8 @@ namespace Project1
 
             //string formatting voor data bekijken?
             Console.WriteLine("Geef de geboortedatum in: DD/MM/YYYY");
-            dier.Age = BerekenLeeftijd(Convert.ToDateTime(Console.ReadLine()));
-            newDier.Add(dier.Age.ToString());
+            dier.DateOfBirth = Convert.ToDateTime(Console.ReadLine());
+            newDier.Add(dier.DateOfBirth.ToString());
 
             Console.WriteLine("Wordt het dier ondergebracht in ons aquarium (1), het safaripark(2), het vogelparadijs(3) of de kinderboerderij(4)?");
             dier.Habitat = Habitats.aquarium.ToString();
