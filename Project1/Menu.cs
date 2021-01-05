@@ -20,24 +20,24 @@ namespace Project1
                 Console.WriteLine("Welkom in Dierentuin Ikweetgeennaam!");
                 Console.WriteLine("Gelieve een optie te selecteren:");
                 Console.WriteLine("***********************************************");
-                Console.WriteLine("F1: Voeg een dier toe aan de database.");
-                Console.WriteLine("F2: Bekijk de database van dierentuin Ikweetgeennaam");
-                Console.WriteLine("F3: Sluit het menu af");
+                Console.WriteLine("A: Voeg een dier toe aan de database.");
+                Console.WriteLine("B: Bekijk de database van dierentuin Ikweetgeennaam");
+                Console.WriteLine("C: Sluit het menu af");
 
                 var input = Console.ReadKey();
 
                 switch (input.Key)
                 {
-                    case ConsoleKey.F1:
+                    case ConsoleKey.A:
                         dier.VoegDierToe(dier);
                         break;
 
-                    case ConsoleKey.F2:
+                    case ConsoleKey.B:
                         dier.PrintDierenLijst(fileReaderWriter.ReadDataFromFile(fileReaderWriter.PATH_LIST));
                         Console.ReadLine();
                         break;
 
-                    case ConsoleKey.F3:
+                    case ConsoleKey.C:
 
                         Environment.Exit(0);
                         break;

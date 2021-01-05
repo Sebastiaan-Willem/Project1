@@ -24,15 +24,15 @@ namespace Project1
         public string Gender { get; set; }
         //public enum Gender { Male = 1, Female, Other }
         public string[] Diet { get; set; }
-        public string Habitat { get; set; }
+        public enum Habitat { A = 1, S, V, K }
 
         List<Dier> dierenLijst = new List<Dier>();
 
-        
+
 
         public void VoegDierToe(Dier dier)
         {
-            
+
             ID++;
             //eventueel eerst dier aanmaken via constructor met ingegeven parameters en dan hele dier object meegeven om te printen in readerWriter
 
@@ -46,7 +46,7 @@ namespace Project1
             newDier.Add(Console.ReadLine());
             Console.WriteLine("Geef het dier een naam:");
             newDier.Add(Console.ReadLine());
-            
+
             char temp;
             do
             {
@@ -61,19 +61,19 @@ namespace Project1
                     Console.WriteLine("De gegeven input is incorrect, probeer opnieuw:");
                 }
 
-            } while (!(temp == 'M' || temp == 'V' || temp == 'X')); 
+            } while (!(temp == 'M' || temp == 'V' || temp == 'X'));
 
             //string formatting voor data bekijken?
             Console.WriteLine("Geef de geboortedatum in: DD/MM/YYYY");
             newDier.Add(Console.ReadLine());
 
 
-            //eventueel enum voor habitat
-            Console.WriteLine("Wordt het dier ondergebracht in ons aquarium, het safaripark, het vogelparadijs of de kinderboerderij?");
+
+            Console.WriteLine("Wordt het dier ondergebracht in ons aquarium (A), het safaripark(S), het vogelparadijs(V) of de kinderboerderij(K)?");
             newDier.Add(Console.ReadLine());
             Console.WriteLine("Geef aan wat het dier dagelijks wenst te eten:");
             newDier.Add("[" + Console.ReadLine() + "]");
-            
+
 
 
             fileReaderWriter.WriteDataToFile(newDier.ToArray());
@@ -83,7 +83,7 @@ namespace Project1
 
         public void PrintDierenLijst(List<string> dieren)
         {
-            if(!(dieren.Count == 0))
+            if (!(dieren.Count == 0))
             {
                 foreach (string dier in dieren)
                 {
@@ -98,7 +98,26 @@ namespace Project1
                 Console.ResetColor();
             }
 
-            
+
+        }
+
+        public void BerekenLeeftijd();
+        {
+        //(EndDate.Date - StartDate.Date).Days
+            //EndDate is dan huidige dag met:
+            //gevonden: DateTime.Now.ToString("MM/dd/yyyy")
+            //proberen met: DateTime.Now.ToString("dd/MM/yyyy")
+            //StartDate gelijkstellen aan geboortedatum
+
+            //while (MyReader.Read())
+            //{
+            //    TextBox1.Text = Convert.ToDateTime(MyReader["DateField"]).ToString("dd/MM/yyyy");
+            //}
+
+        //string today = Convert.DateTime.Today;
+        //int age = today.Year - birthdate.Year;
+        //if (birthdate.date > today.AddYears(-age)) age--;
+
         }
 
         public void PrintDierMetId()
@@ -108,12 +127,13 @@ namespace Project1
         }
 
 
-        //------------------------------------------------------------
-        //EXTRA
-        //------------------------------------------------------------
+
+    //------------------------------------------------------------
+    //EXTRA
+    //------------------------------------------------------------
 
 
-        public double Kosten { get; set; }
+    public double Kosten { get; set; }
         public string FamilyTree { get; set; }
         public double Gewicht { get; set; }
         public double Lengte { get; set; }
