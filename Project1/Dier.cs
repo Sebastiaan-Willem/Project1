@@ -26,12 +26,12 @@ namespace Project1
         public int Leeftijd { get; set; }
         public char Gender { get; set; }
         public string Diet { get; set; }
-        
+
         public string Habitat { get; set; }
 
         List<Dier> dierenLijst = new List<Dier>();
 
-        
+
 
         public void VoegDierToe()
         {
@@ -74,11 +74,42 @@ namespace Project1
             dier.Leeftijd = BerekenLeeftijd(dier.DateOfBirth);
             newDier.Add(dier.Leeftijd.ToString());
 
-            Console.WriteLine("Wordt het dier ondergebracht in ons aquarium (1), het safaripark(2), het vogelparadijs(3) of de kinderboerderij(4)?");
-            dier.Habitat = Habitats.Aquarium.ToString();
-            newDier.Add(dier.Habitat);
+            Console.WriteLine("Wordt het dier ondergebracht in ons Aquarium (1), het Safaripark(2), het Vogelparadijs(3) of de Kinderboerderij(4)?");
 
-            //hier moet nog input gefixt worden en gelinkt aan enum waarde
+            
+            bool test = false;
+            do
+            {
+            if (int.TryParse(Console.ReadLine(), out int HabitatNum))
+            {
+                if (Enum.IsDefined(typeof(Habitats), HabitatNum))
+                {
+                    Habitats myHabitat = (Habitats)HabitatNum;
+                    dier.Habitat = myHabitat.ToString();
+                    newDier.Add(dier.Habitat);
+                    test = true;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("--Dit is geen cijfer die overeenstemt met een habitat, probeer opnieuw.--");
+                    System.Threading.Thread.Sleep(2000);
+                    Console.ResetColor();
+                }
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("--Gelieve een cijfer in te geven.--");
+                System.Threading.Thread.Sleep(2000);
+                Console.ResetColor();
+
+
+            }
+            } while (test == false);
+
+
+
 
             Console.WriteLine("Geef aan wat het dier dagelijks wenst te eten:");
             dier.Diet = Console.ReadLine();
@@ -111,8 +142,10 @@ namespace Project1
 
         }
         public void PrintDierMetId(string dier)
-        {            
-                Console.WriteLine(dier);         
+        {
+            
+                Console.WriteLine(dier);
+            
 
         }
 
@@ -127,7 +160,6 @@ namespace Project1
             return age;
         }
 
-        
 
 
 
