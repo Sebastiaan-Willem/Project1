@@ -88,9 +88,38 @@ namespace Project1
 
         public string ReadDataLineFromFile(int id)
         {
-            //Skip(14) should read 15th line, aka, ID= 15
-            string line = File.ReadLines(pATH_LIST).Skip(id - 1).Take(1).First();
+            string line = string.Empty;
+            if(ReadDataFromFile(PATH_LIST).Count < id)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Er komt geen dier overeen met dat ID nummer in deze lijst.");
+                System.Threading.Thread.Sleep(3000);
+                Console.ResetColor();
+                
+            }
+            else
+            {
+                line = File.ReadLines(pATH_LIST).Skip(id - 1).Take(1).First();
+            }
+            
             return line;
+        }
+
+        public List<String> SearchDataInDocument(string data)
+        {
+            //TODO
+            using StreamReader reader = new StreamReader(PATH_LIST);
+            string line = string.Empty;
+
+            List<string> lines = new List<string>();
+
+            while ((line = reader.ReadLine()) != null)
+            {
+                lines.Add(line);
+
+            }
+
+            return lines;
         }
 
         public void WriteSeparator(string path)
