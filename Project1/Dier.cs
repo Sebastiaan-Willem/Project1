@@ -74,9 +74,31 @@ namespace Project1
             dier.Leeftijd = BerekenLeeftijd(dier.DateOfBirth);
             newDier.Add(dier.Leeftijd.ToString());
 
-            Console.WriteLine("Wordt het dier ondergebracht in ons aquarium (1), het safaripark(2), het vogelparadijs(3) of de kinderboerderij(4)?");
-            dier.Habitat = Habitats.Aquarium.ToString();
-            newDier.Add(dier.Habitat);
+            Console.WriteLine("Wordt het dier ondergebracht in ons Aquarium (1), het Safaripark(2), het Vogelparadijs(3) of de Kinderboerderij(4)?");
+
+
+            if (int.TryParse(Console.ReadLine(), out int HabitatNum))
+            {
+                if (Enum.IsDefined(typeof(Habitats), HabitatNum))
+                {
+                    Habitats myHabitat = (Habitats)HabitatNum;
+                    dier.Habitat = myHabitat.ToString();
+                    newDier.Add(dier.Habitat);
+                }
+                else
+                {
+                    Console.WriteLine("Dit is geen geldig cijfer.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Gelieve een cijfer in te geven.");
+            }
+
+
+            
+            
+
 
             //hier moet nog input gefixt worden en gelinkt aan enum waarde
 
