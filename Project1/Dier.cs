@@ -129,10 +129,10 @@ namespace Project1
         public int BerekenLeeftijd(string geboorteDatum)
         {
             //(EndDate.Date - StartDate.Date).Days
-            //EndDate is dan huidige dag met:
-            //gevonden: DateTime.Now.ToString("MM/dd/yyyy")
-            //proberen met: DateTime.Now.ToString("dd/MM/yyyy")
-            //StartDate gelijkstellen aan geboortedatum
+                //EndDate is dan huidige dag met:
+                //gevonden: DateTime.Now.ToString("MM/dd/yyyy")
+                //proberen met: DateTime.Now.ToString("dd/MM/yyyy")
+                //StartDate gelijkstellen aan geboortedatum
 
             //while (MyReader.Read())
             //{
@@ -142,7 +142,7 @@ namespace Project1
             //string today = Convert.DateTime.Today;
             //int age = today.Year - birthdate.Year;
             //if (birthdate.date > today.AddYears(-age)) age--;
-            return Age;
+
         }
 
         
