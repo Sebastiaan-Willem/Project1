@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace Project1
@@ -83,6 +84,13 @@ namespace Project1
             }
 
             return lines;
+        }
+
+        public string ReadDataLineFromFile(int id)
+        {
+            //Skip(14) should read 15th line, aka, ID= 15
+            string line = File.ReadLines(pATH_LIST).Skip(id - 1).Take(1).First();
+            return line;
         }
 
         public void WriteSeparator(string path)

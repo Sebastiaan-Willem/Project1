@@ -100,19 +100,35 @@ namespace Project1
 
 
         }
+        public void PrintDierMetId(string dier)
+        {
+            if (!(dier == ""))
+            {
+                Console.WriteLine(dier);
+                
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Er is geen dier gevonden met dit ID nummer");
+                System.Threading.Thread.Sleep(3000);
+                Console.ResetColor();
+            }
+
+        }
 
         public void BerekenLeeftijd()
         {
-            //(EndDate.Date - StartDate.Date).Days
+        //(EndDate.Date - StartDate.Date).Days
             //EndDate is dan huidige dag met:
             //gevonden: DateTime.Now.ToString("MM/dd/yyyy")
             //proberen met: DateTime.Now.ToString("dd/MM/yyyy")
             //StartDate gelijkstellen aan geboortedatum
 
-            //while (MyReader.Read())
-            //{
-            //    TextBox1.Text = Convert.ToDateTime(MyReader["DateField"]).ToString("dd/MM/yyyy");
-            //}
+                //while (MyReader.Read())
+                //{
+                //    TextBox1.Text = Convert.ToDateTime(MyReader["DateField"]).ToString("dd/MM/yyyy");
+                //}
 
             //string today = Convert.DateTime.Today;
             //int age = today.Year - birthdate.Year;
@@ -123,11 +139,7 @@ namespace Project1
             DateTime today = DateTime.Today;
         }
 
-        public void PrintDierMetId()
-        {
-            //should read 15th line, aka, ID= 15
-            //string line = File.ReadLines(FileName).Skip(14).Take(1).First();
-        }
+        
 
 
 
@@ -136,7 +148,7 @@ namespace Project1
     //------------------------------------------------------------
 
 
-    public double Kosten { get; set; }
+        public double Kosten { get; set; }
         public string FamilyTree { get; set; }
         public double Gewicht { get; set; }
         public double Lengte { get; set; }

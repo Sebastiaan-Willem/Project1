@@ -21,8 +21,10 @@ namespace Project1
                 Console.WriteLine("Gelieve een optie te selecteren:");
                 Console.WriteLine("***********************************************");
                 Console.WriteLine("A: Voeg een dier toe aan de database.");
-                Console.WriteLine("B: Bekijk de database van dierentuin Ikweetgeennaam");
-                Console.WriteLine("C: Sluit het menu af");
+                Console.WriteLine("B: Bekijk de database van dierentuin Ikweetgeennaam.");
+                Console.WriteLine("C: Bekijk data van een dier op basis van ID.");
+                Console.WriteLine("D: Wijzig Data van een Dier.");
+                Console.WriteLine("Q: Sluit het menu af");
 
                 var input = Console.ReadKey();
 
@@ -36,8 +38,17 @@ namespace Project1
                         dier.PrintDierenLijst(fileReaderWriter.ReadDataFromFile(fileReaderWriter.PATH_LIST));
                         Console.ReadLine();
                         break;
-
                     case ConsoleKey.C:
+                        Console.WriteLine("Geef het ID van het dier dat u wenst op te vragen.");
+                        dier.PrintDierMetId(fileReaderWriter.ReadDataLineFromFile(Convert.ToInt32(Console.ReadLine())));
+                        Console.ReadLine();
+                        break;
+                    case ConsoleKey.D:
+                        dier.PrintDierenLijst(fileReaderWriter.ReadDataFromFile(fileReaderWriter.PATH_LIST));
+                        Console.ReadLine();
+                        break;
+
+                    case ConsoleKey.Q:
 
                         Environment.Exit(0);
                         break;
