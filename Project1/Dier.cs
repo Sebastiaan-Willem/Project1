@@ -112,18 +112,9 @@ namespace Project1
         }
         public void PrintDierMetId(string dier)
         {
-            if (!(dier == ""))
-            {
+            
                 Console.WriteLine(dier);
-                
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Er is geen dier gevonden met dit ID nummer");
-                System.Threading.Thread.Sleep(3000);
-                Console.ResetColor();
-            }
+            
 
         }
 
