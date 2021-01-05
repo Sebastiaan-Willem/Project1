@@ -53,7 +53,7 @@ namespace Project1
 
         }
 
-        public void EditData(string old, string replace)
+        public void EditData(int id, string old, string replace)
         {
             
             StreamReader reader = new StreamReader(PATH_LIST);
@@ -68,6 +68,7 @@ namespace Project1
                 }
                 writer.Close();
             }
+            reader.Close();
         }
 
         public List<string> ReadDataFromFile(string path)
@@ -82,12 +83,14 @@ namespace Project1
                 lines.Add(line);
 
             }
-
+            
             return lines;
         }
 
         public string ReadDataLineFromFile(int id)
         {
+            using StreamReader reader = new StreamReader(PATH_LIST);            
+
             string line = string.Empty;
             if(ReadDataFromFile(PATH_LIST).Count < id)
             {
@@ -99,25 +102,25 @@ namespace Project1
             }
             else
             {
-                line = File.ReadLines(pATH_LIST).Skip(id - 1).Take(1).First();
+                //line = File.ReadLines(pATH_LIST).Skip(id - 1).Take(1).First();
+                
+                //System.Threading.Thread.Sleep(500);
+                line = reader.ReadLine().Skip(id - 1).Take(1).ToString();
+                //Console.WriteLine(reader.ReadLine().Skip(id - 1).Take(1));
+
             }
+            reader.Close();
+            return line;            
             
-            return line;
         }
 
         public List<String> SearchDataInDocument(string data)
         {
             //TODO
-            using StreamReader reader = new StreamReader(PATH_LIST);
-            string line = string.Empty;
+           
 
             List<string> lines = new List<string>();
 
-            while ((line = reader.ReadLine()) != null)
-            {
-                lines.Add(line);
-
-            }
 
             return lines;
         }

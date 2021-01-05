@@ -111,10 +111,8 @@ namespace Project1
 
         }
         public void PrintDierMetId(string dier)
-        {
-            
-                Console.WriteLine(dier);
-            
+        {            
+                Console.WriteLine(dier);         
 
         }
 
@@ -144,10 +142,20 @@ namespace Project1
         public double Lengte { get; set; }
         public DateTime InschrijvingsDatum { get; set; }
 
-        public void WijzigData(string oldData, string newData)
+        public void WijzigData()
         {
-            //TODO
-            fileReaderWriter.EditData(oldData, newData);
+            Console.WriteLine("Geef het ID van het dier dat u wenst aan te passen.");
+            int tempID = Convert.ToInt32(Console.ReadLine());
+            PrintDierMetId(fileReaderWriter.ReadDataLineFromFile(tempID));
+
+            Console.WriteLine("Wat wenst u aan te passen?");
+            string oldData = Console.ReadLine();
+
+            Console.WriteLine("Waardoor wenst u dit te vervangen?");
+            string newData = Console.ReadLine();
+            System.Threading.Thread.Sleep(500);
+            fileReaderWriter.EditData(tempID, oldData, newData);
+            PrintDierMetId(fileReaderWriter.ReadDataLineFromFile(Convert.ToInt32(Console.ReadLine())));
         }
 
         public void VerwijderDier(Dier dier)
