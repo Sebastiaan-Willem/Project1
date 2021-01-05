@@ -31,7 +31,33 @@ namespace Project1
 
         List<Dier> dierenLijst = new List<Dier>();
 
+        public Dier()
+        {
 
+        }
+        public Dier(string naam, string soort, int age)
+        {
+            Name = naam;
+            Soort = soort;
+            Leeftijd = age;
+        }
+        public void test()
+        {
+            //Voorbeeld/test ivm objecten van Data maken
+            Dier koe = new Dier("Bessie", "Koe", 13);
+            Dier paard = new Dier();
+            Dier zeemeeuw = new Dier();
+            dierenLijst.Add(koe);
+            dierenLijst.Add(paard);
+            dierenLijst.Add(zeemeeuw);
+
+
+
+            foreach (Dier dier in dierenLijst)
+            {
+                Console.WriteLine($"{dier.Name} is een {dier.Soort} en is {dier.Leeftijd} jaar oud.");
+            }
+        }
 
         public void VoegDierToe()
         {
