@@ -24,55 +24,82 @@ namespace Project1
 
         private string dateTime = Convert.ToString(System.DateTime.Now);
 
+        //public void WriteDataToFile(string textToWriteToFile, string path)
+        //{
+        //    using StreamWriter writer = new StreamWriter(path, true);
+        //    writer.WriteLine(textToWriteToFile);
+        //}
+
+        //public void WriteDataToFile(string[] lines)
+        //{
+        //    using StreamWriter writer = new StreamWriter(pATH_LIST, true); //true om nieuwe tekst toe te voegen ipv overschrijven.
+        //    writer.WriteLine();
+        //    foreach (string line in lines)
+        //    {
+        //        writer.Write($"{line} ");
+        //    }
+        //}
+
+        //public void WriteDataToFile(string[] lines, string path)
+        //{
+        //    using StreamWriter writer = new StreamWriter(path, true); //true om nieuwe tekst toe te voegen ipv overschrijven.
+        //    writer.WriteLine();
+        //    foreach (string line in lines)
+        //    {
+        //        writer.Write($"{line} ");
+        //    }
+        //}
+
         public void WriteDataToFile(string textToWriteToFile, string path)
         {
             using StreamWriter writer = new StreamWriter(path, true);
             writer.WriteLine(textToWriteToFile);
         }
-
         public void WriteDataToFile(string[] lines)
         {
-            using StreamWriter writer = new StreamWriter(pATH_LIST, true); //true om nieuwe tekst toe te voegen ipv overschrijven.
-            writer.WriteLine();
-            foreach (string line in lines)
-            {
-                writer.Write($"{line} ");
-            }
+            WriteDataToFile(lines, pATH_LIST);
         }
 
         public void WriteDataToFile(string[] lines, string path)
         {
-            using StreamWriter writer = new StreamWriter(path, true); //true om nieuwe tekst toe te voegen ipv overschrijven.
-            writer.WriteLine();
+            using StreamWriter writer = new StreamWriter(path); //true om nieuwe tekst toe te voegen ipv overschrijven.
             foreach (string line in lines)
             {
-                writer.Write($"{line} ");
+                writer.WriteLine($"{line} ");
             }
         }
 
-        public void EditData(int id, string old, string replace)
+        public void EditData(int id, string oldValue, string newValue)
         {
-            StreamReader reader = new StreamReader(PATH_LIST);
-            //eventueel editen op een specifieke regel op basis van ID?
-            string input = ReadDataLineFromFile(id);
-
-            using (StreamWriter writer = new StreamWriter(PATH_LIST, true))
-            {
-                {
-                    string output = input.Replace(old, replace);
-                    writer.Write(output);
-                }
-                writer.Close();
-            }
-            reader.Close();
-
-            //var target = File
-            //                   .ReadLines(@"C:\MyFile.txt")
-            //                   .Select(line => line) //TODO: put your actual edit here
-            //                   .ToList(); // In order to prevent access problems
-
-            //File.WriteAllLines(@"C:\MyFile.txt", target);
+            var lines = ReadDataFromFile(PATH_LIST);
+            string lineToReplace = lines[id - 1];
+            lineToReplace = lineToReplace.Replace(oldValue, newValue);
+            lines[id - 1] = lineToReplace;
+            WriteDataToFile(lines.ToArray());
         }
+
+        //public void EditData(int id, string old, string replace)
+        //{
+        //    //dubbele streamreader + writer = conflict 
+        //    //using StreamReader reader = new StreamReader(PATH_LIST);
+        //    //eventueel editen op een specifieke regel op basis van ID?
+        //    string input = ReadDataLineFromFile(id);
+
+        //    using StreamWriter writer = new StreamWriter(PATH_LIST, true);
+        //    {
+        //        string output = input.Replace(old, replace);
+        //        writer.Write(output);
+        //    }
+        //    writer.Close();
+
+
+        //    //var target = File
+        //    //                   .ReadLines(@"C:\MyFile.txt")
+        //    //                   .Select(line => line) //TODO: put your actual edit here
+        //    //                   .ToList(); // In order to prevent access problems
+
+        //    //File.WriteAllLines(@"C:\MyFile.txt", target);
+        //}
 
         public List<string> ReadDataFromFile(string path)
         {
