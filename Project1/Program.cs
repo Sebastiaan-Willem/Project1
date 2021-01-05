@@ -1,14 +1,14 @@
-﻿using System;
-
-namespace Project1
+﻿namespace Project1
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            string PATH_LIST = $"C:\\Users\\{Environment.UserName}\\source\\repos\\Project1\\Project1\\lijstDieren.txt";
             FileManager fileManager = new FileManager();
-            fileManager.CreateFile(PATH_LIST);
+            FileReaderWriter readerWriter = new FileReaderWriter();
+
+            fileManager.CreateFile(readerWriter.PATH_LIST);
+            fileManager.CreateFile(readerWriter.PATH_DEAD);
 
             Menu menu = new Menu();
             menu.PrintMenu();

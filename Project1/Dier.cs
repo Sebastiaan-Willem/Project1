@@ -171,7 +171,7 @@ namespace Project1
         public double Kosten { get; set; }
         public string FamilyTree { get; set; }
         public double Gewicht { get; set; }
-        public double Lengte { get; set; }
+        public double Lengte { get; set; } 
         public DateTime InschrijvingsDatum { get; set; }
 
         public void WijzigData()
@@ -190,9 +190,11 @@ namespace Project1
             PrintDierMetId(fileReaderWriter.ReadDataLineFromFile(Convert.ToInt32(Console.ReadLine())));
         }
 
-        public void VerwijderDier(Dier dier)
+        public void VerwijderDier()
         {
-            dierenLijst.Remove(dier);
+            Console.WriteLine("Geef het ID van het dier dat u wenst te verwijderen.");
+            fileReaderWriter.MoveDataFromFile(Convert.ToInt32(Console.ReadLine()));
+            Console.WriteLine("ByeBye :(");
         }
     }
 }

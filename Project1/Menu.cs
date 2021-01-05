@@ -23,7 +23,9 @@ namespace Project1
                 Console.WriteLine("A: Voeg een dier toe aan de database.");
                 Console.WriteLine("B: Bekijk de database van dierentuin Ikweetgeennaam.");
                 Console.WriteLine("C: Bekijk data van een dier op basis van ID.");
-                Console.WriteLine("D: Wijzig Data van een Dier.");
+                Console.WriteLine("D: Wijzig Data van een dier.");
+                Console.WriteLine("E: Verwijderen van een dier.");
+                Console.WriteLine("F: Bekijk lijst overleden dieren.");
                 Console.WriteLine("Q: Sluit het menu af");
 
                 var input = Console.ReadKey();
@@ -56,6 +58,24 @@ namespace Project1
 
                             Console.Clear();
                             dier.WijzigData();
+                            Console.WriteLine("Duw op Enter om terug te keren naar het menu.");
+                            Console.ReadLine();
+                        break;
+
+                    case ConsoleKey.E:
+
+                            Console.Clear();
+
+                            dier.VerwijderDier();
+                            Console.WriteLine("Duw op Enter om terug te keren naar het menu.");
+                            Console.ReadLine();
+                            break;
+                    case ConsoleKey.F:
+
+                            Console.Clear();
+
+                            Console.Clear();
+                            dier.PrintDierenLijst(fileReaderWriter.ReadDataFromFile(fileReaderWriter.PATH_DEAD));
                             Console.WriteLine("Duw op Enter om terug te keren naar het menu.");
                             Console.ReadLine();
                         break;
