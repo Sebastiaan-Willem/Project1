@@ -74,7 +74,7 @@ namespace Project1
             //File.WriteAllLines(@"C:\MyFile.txt", target);
         }
 
-        public List<char> ReadDataFromFile(string path)
+        public List<string> ReadDataFromFile(string path)
         {
             using StreamReader reader = new StreamReader(path);
             string line = string.Empty;
@@ -93,7 +93,7 @@ namespace Project1
         {
             using StreamReader reader = new StreamReader(PATH_LIST);
 
-            List<char> line = new List<char>();
+            string line = string.Empty;
             if (ReadDataFromFile(PATH_LIST).Count < id)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -103,7 +103,7 @@ namespace Project1
             }
             else
             {
-                line = File.ReadLines(pATH_LIST).Skip(id - 1).Take(1).First().ToList();
+                line = File.ReadLines(pATH_LIST).Skip(id - 1).Take(1).First();
 
                 //System.Threading.Thread.Sleep(500);
                 //line = reader.ReadLine().Skip(id - 1).Take(1).ToString();
