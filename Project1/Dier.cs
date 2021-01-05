@@ -86,6 +86,7 @@ namespace Project1
 
 
         }
+
         public void PrintDierMetId(string dier)
         {
             Console.WriteLine(dier);

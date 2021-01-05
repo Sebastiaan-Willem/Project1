@@ -17,7 +17,7 @@ namespace Project1
             {
                 Console.Clear();
 
-                Console.WriteLine("Welkom in Dierentuin Ikweetgeennaam!");
+                Console.WriteLine("Welkom in Dierentuin WoopDeeZoo!");
                 Console.WriteLine("Gelieve een optie te selecteren:");
                 Console.WriteLine("***********************************************");
                 Console.WriteLine("A: Voeg een dier toe aan de database.");
