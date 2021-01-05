@@ -137,6 +137,9 @@ namespace Project1
             //   constructor: DateTime justDate = new DateTime(2002, 10, 18);
 
             DateTime today = DateTime.Today;
+            DateTime birthdate = 
+            
+                //int age = today.Year - birthdate.Year;
         }
 
         
