@@ -41,81 +41,26 @@ namespace Project1
             dier.ID = fileReaderWriter.ReadDataFromFile(fileReaderWriter.PATH_LIST).Count + 1;
             newDier.Add(dier.ID.ToString());
 
-            Console.WriteLine("Om welk dier gaat het?");
-            dier.Soort = Console.ReadLine();
+            dier.Soort = BepaalDiersoort();
             newDier.Add(dier.Soort);
 
-            Console.WriteLine("Geef het dier een naam:");
-            dier.Name = Console.ReadLine();
+            dier.Name = BepaalEigennaam();
             newDier.Add(dier.Name);
 
+            dier.Gender = BepaalGeslacht();
+            newDier.Add(dier.Gender.ToString());
 
-            char temp;
-            do
-            {
-                Console.WriteLine("Wat is het geslacht? (M/V/X)");
-                temp = Convert.ToChar(Console.ReadLine());
-                if ((temp == 'M') || (temp == 'V') || (temp == 'X'))
-                {
-                    dier.Gender = temp;
-                    newDier.Add(dier.Gender.ToString());
-                }
-                else
-                {
-                    Console.WriteLine("De gegeven input is incorrect, probeer opnieuw:");
-                }
-
-            } while (!(temp == 'M' || temp == 'V' || temp == 'X'));
-
-            Console.WriteLine("Geef de geboortedatum in: DD/MM/YYYY");
-            dier.DateOfBirth = Convert.ToDateTime(Console.ReadLine());
+            dier.DateOfBirth = BepaalGeboortedatum();
             newDier.Add(dier.DateOfBirth.ToString("dd/MM/yyyy"));
 
             dier.Leeftijd = BerekenLeeftijd(dier.DateOfBirth);
             newDier.Add(dier.Leeftijd.ToString());
 
-            Console.WriteLine("Wordt het dier ondergebracht in ons Aquarium (1), het Safaripark(2), het Vogelparadijs(3) of de Kinderboerderij(4)?");
+            dier.Habitat = BepaalHabitat();
+            newDier.Add(dier.Habitat);
 
-            
-            bool test = false;
-            do
-            {
-            if (int.TryParse(Console.ReadLine(), out int HabitatNum))
-            {
-                if (Enum.IsDefined(typeof(Habitats), HabitatNum))
-                {
-                    Habitats myHabitat = (Habitats)HabitatNum;
-                    dier.Habitat = myHabitat.ToString();
-                    newDier.Add(dier.Habitat);
-                    test = true;
-                }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("--Dit is geen cijfer die overeenstemt met een habitat, probeer opnieuw.--");
-                    System.Threading.Thread.Sleep(2000);
-                    Console.ResetColor();
-                }
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("--Gelieve een cijfer in te geven.--");
-                System.Threading.Thread.Sleep(2000);
-                Console.ResetColor();
-
-
-            }
-            } while (test == false);
-
-
-
-
-            Console.WriteLine("Geef aan wat het dier dagelijks wenst te eten:");
-            dier.Diet = Console.ReadLine();
+            dier.Diet = BepaalDieet();
             newDier.Add("[" + dier.Diet + "]");
-
-
 
             fileReaderWriter.WriteDataToFile(newDier.ToArray());
 
@@ -143,10 +88,25 @@ namespace Project1
         }
         public void PrintDierMetId(string dier)
         {
-            
-                Console.WriteLine(dier);
-            
+            Console.WriteLine(dier);
+        }
 
+        public string BepaalDiersoort()
+        {
+            Console.WriteLine("Om welk dier gaat het?");
+            return Console.ReadLine().ToUpper();
+        }
+
+        public string BepaalEigennaam()
+        {
+            Console.WriteLine("Geef het dier een eigennaam:");
+            return Console.ReadLine();
+        }
+
+        public DateTime BepaalGeboortedatum()
+        {
+            Console.WriteLine("Geef de geboortedatum in: DD/MM/YYYY");
+            return Convert.ToDateTime(Console.ReadLine());
         }
 
         public int BerekenLeeftijd(DateTime geboorteDatum)
@@ -160,12 +120,76 @@ namespace Project1
             return age;
         }
 
+        public char BepaalGeslacht()
+        {
+            char temp;
+            do
+            {
+                Console.WriteLine("Wat is het geslacht? (M/V/X)");
+                temp = Convert.ToChar(Console.ReadLine().ToUpper());
+                if ((temp == 'M') || (temp == 'V') || (temp == 'X'))
+                {
+                    return temp;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("--De gegeven input is incorrect, probeer opnieuw:--");
+                    Console.ResetColor();
+                }
+
+            } while (!(temp == 'M' || temp == 'V' || temp == 'X'));
+
+            return temp;
+        }
+
+        public string BepaalHabitat()
+        {
+            Console.WriteLine("Wordt het dier ondergebracht in ons Aquarium (1), het Safaripark(2), het Vogelparadijs(3) of de Kinderboerderij(4)?");
+            bool test = false;
+            do
+            {
+                if (int.TryParse(Console.ReadLine(), out int HabitatNum))
+                {
+                    if (Enum.IsDefined(typeof(Habitats), HabitatNum))
+                    {
+                        Habitats myHabitat = (Habitats)HabitatNum;
+                        return myHabitat.ToString();
+
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("--Dit is geen cijfer die overeenstemt met een habitat, probeer opnieuw.--");
+                        Console.ResetColor();
+
+                    }
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("--Gelieve een cijfer in te geven.--");
+                    Console.ResetColor();
+
+                }
+            } while (test == false);
+
+            string helphoebenikhierditiszinloos = string.Empty;
+            return helphoebenikhierditiszinloos;
+        }
+
+        public string BepaalDieet()
+            {
+            Console.WriteLine("Geef aan wat het dier dagelijks wenst te eten:");
+            return Console.ReadLine();
+            }
 
 
 
-    //------------------------------------------------------------
-    //EXTRA
-    //------------------------------------------------------------
+
+        //------------------------------------------------------------
+        //EXTRA
+        //------------------------------------------------------------
 
 
         public double Kosten { get; set; }
