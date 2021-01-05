@@ -103,7 +103,7 @@ namespace Project1
 
         public void BerekenLeeftijd()
         {
-        //(EndDate.Date - StartDate.Date).Days
+            //(EndDate.Date - StartDate.Date).Days
             //EndDate is dan huidige dag met:
             //gevonden: DateTime.Now.ToString("MM/dd/yyyy")
             //proberen met: DateTime.Now.ToString("dd/MM/yyyy")
@@ -114,10 +114,13 @@ namespace Project1
             //    TextBox1.Text = Convert.ToDateTime(MyReader["DateField"]).ToString("dd/MM/yyyy");
             //}
 
-        //string today = Convert.DateTime.Today;
-        //int age = today.Year - birthdate.Year;
-        //if (birthdate.date > today.AddYears(-age)) age--;
+            //string today = Convert.DateTime.Today;
+            //int age = today.Year - birthdate.Year;
+            //if (birthdate.date > today.AddYears(-age)) age--;
 
+            //   constructor: DateTime justDate = new DateTime(2002, 10, 18);
+
+            DateTime today = DateTime.Today;
         }
 
         public void PrintDierMetId()
