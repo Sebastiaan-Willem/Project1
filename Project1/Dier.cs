@@ -25,7 +25,7 @@ namespace Project1
         public int Age { get; set; }
         public char Gender { get; set; }
         //public enum Gender { Male = 1, Female, Other }
-        public string[] Diet { get; set; }
+        public string Diet { get; set; }
         
         public string Habitat { get; set; }
 
@@ -73,7 +73,7 @@ namespace Project1
 
             //string formatting voor data bekijken?
             Console.WriteLine("Geef de geboortedatum in: DD/MM/YYYY");
-            dier.Age = BerekenLeeftijd(Console.ReadLine());
+            dier.Age = BerekenLeeftijd(Convert.ToDateTime(Console.ReadLine()));
             newDier.Add(dier.Age.ToString());
 
             Console.WriteLine("Wordt het dier ondergebracht in ons aquarium (1), het safaripark(2), het vogelparadijs(3) of de kinderboerderij(4)?");
@@ -81,7 +81,8 @@ namespace Project1
             newDier.Add(dier.Habitat);
 
             Console.WriteLine("Geef aan wat het dier dagelijks wenst te eten:");
-            newDier.Add("[" + Console.ReadLine() + "]");
+            dier.Diet = Console.ReadLine();
+            newDier.Add("[" + dier.Diet + "]");
 
 
 
@@ -126,7 +127,7 @@ namespace Project1
 
         }
 
-        public int BerekenLeeftijd(string geboorteDatum)
+        public int BerekenLeeftijd(DateTime geboorteDatum)
         {
             //(EndDate.Date - StartDate.Date).Days
                 //EndDate is dan huidige dag met:
@@ -146,9 +147,11 @@ namespace Project1
             //   constructor: DateTime justDate = new DateTime(2002, 10, 18);
 
             DateTime today = DateTime.Today;
-            DateTime birthdate = 
-            
-                //int age = today.Year - birthdate.Year;
+            DateTime birthdate = geboorteDatum;
+            int age = today.Year - birthdate.Year;
+
+
+            return age;
         }
 
         

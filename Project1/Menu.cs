@@ -31,7 +31,7 @@ namespace Project1
                 switch (input.Key)
                 {
                     case ConsoleKey.A:
-                        dier.VoegDierToe(dier);
+                        dier.VoegDierToe();
                         break;
 
                     case ConsoleKey.B:
