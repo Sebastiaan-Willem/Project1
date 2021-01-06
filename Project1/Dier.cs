@@ -256,18 +256,45 @@ namespace Project1
 
         public void WijzigData()
         {
-            Console.WriteLine("Geef het ID van het dier dat u wenst aan te passen.");
-            int tempID = Convert.ToInt32(Console.ReadLine());
-            PrintDierMetId(fileReaderWriter.ReadDataLineFromFile(tempID));
+            //NEW
+            //Console.WriteLine("Geef het ID van het dier dat u wenst aan te passen.");
+            //int tempID = Convert.ToInt32(Console.ReadLine());
+            //PrintDierMetId(tempID);
 
-            Console.WriteLine("Wat wenst u aan te passen?");
-            string oldData = Console.ReadLine();
+            //Console.WriteLine("Wat wenst u aan te passen?");
+            //string oldData = Console.ReadLine();
 
-            Console.WriteLine("Waardoor wenst u dit te vervangen?");
-            string newData = Console.ReadLine();
-            System.Threading.Thread.Sleep(500);
-            fileReaderWriter.EditData(tempID, oldData, newData);
-            PrintDierMetId(fileReaderWriter.ReadDataLineFromFile(tempID));
+            //Console.WriteLine("Waardoor wenst u dit te vervangen?");
+            //string newData = Console.ReadLine();
+
+            //foreach (Dier dier in dierenLijst)
+            //{
+            //    switch (dier)
+            //    {
+            //        case dier.
+            //        default:
+            //            break;
+            //    }
+            //}
+
+            //fileReaderWriter.UpdateDataToFile();
+            //PrintDierMetId(fileReaderWriter.ReadDataLineFromFile(tempID));
+
+
+            //OLD
+
+            //Console.WriteLine("Geef het ID van het dier dat u wenst aan te passen.");
+            //int tempID = Convert.ToInt32(Console.ReadLine());
+            //PrintDierMetId(fileReaderWriter.ReadDataLineFromFile(tempID));
+
+            //Console.WriteLine("Wat wenst u aan te passen?");
+            //string oldData = Console.ReadLine();
+
+            //Console.WriteLine("Waardoor wenst u dit te vervangen?");
+            //string newData = Console.ReadLine();
+            //System.Threading.Thread.Sleep(500);
+            //fileReaderWriter.EditData(tempID, oldData, newData);
+            //PrintDierMetId(fileReaderWriter.ReadDataLineFromFile(tempID));
         }
 
         public void VerwijderDier()

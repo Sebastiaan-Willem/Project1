@@ -43,6 +43,16 @@ namespace Project1
             }
         }
 
+        public void UpdateDataToFile(string[] lines)
+        {
+            using StreamWriter writer = new StreamWriter(PATH_LIST); //true om nieuwe tekst toe te voegen ipv overschrijven.
+            writer.WriteLine();
+            foreach (string line in lines)
+            {
+                writer.Write($"{line} ");
+            }
+        }
+
         public void EditData(int id, string oldValue, string newValue)
         {
             var lines = ReadDataFromFile(PATH_LIST);
