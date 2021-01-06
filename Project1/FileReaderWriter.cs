@@ -96,11 +96,7 @@ namespace Project1
             }
             else
             {
-                line = File.ReadLines(pATH_LIST).Skip(id - 1).Take(1).First();
-
-                //System.Threading.Thread.Sleep(500);
-                //line = reader.ReadLine().Skip(id - 1).Take(1).ToString();
-                //Console.WriteLine(reader.ReadLine().Skip(id - 1).Take(1));
+                line = File.ReadLines(pATH_LIST).Skip(id - 1).Take(1).First();                
             }
             reader.Close();
             return line;
