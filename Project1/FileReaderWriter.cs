@@ -23,33 +23,6 @@ namespace Project1
         //waarom werkt filemanager object niet om hier nieuwe files te maken?
 
         private string dateTime = Convert.ToString(System.DateTime.Now);
-
-        //public void WriteDataToFile(string textToWriteToFile, string path)
-        //{
-        //    using StreamWriter writer = new StreamWriter(path, true);
-        //    writer.WriteLine(textToWriteToFile);
-        //}
-
-        //public void WriteDataToFile(string[] lines)
-        //{
-        //    using StreamWriter writer = new StreamWriter(pATH_LIST, true); //true om nieuwe tekst toe te voegen ipv overschrijven.
-        //    writer.WriteLine();
-        //    foreach (string line in lines)
-        //    {
-        //        writer.Write($"{line} ");
-        //    }
-        //}
-
-        //public void WriteDataToFile(string[] lines, string path)
-        //{
-        //    using StreamWriter writer = new StreamWriter(path, true); //true om nieuwe tekst toe te voegen ipv overschrijven.
-        //    writer.WriteLine();
-        //    foreach (string line in lines)
-        //    {
-        //        writer.Write($"{line} ");
-        //    }
-        //}
-
         public void WriteDataToFile(string textToWriteToFile, string path)
         {
             using StreamWriter writer = new StreamWriter(path, true);
@@ -62,10 +35,11 @@ namespace Project1
 
         public void WriteDataToFile(string[] lines, string path)
         {
-            using StreamWriter writer = new StreamWriter(path); //true om nieuwe tekst toe te voegen ipv overschrijven.
+            using StreamWriter writer = new StreamWriter(path, true); //true om nieuwe tekst toe te voegen ipv overschrijven.
+            writer.WriteLine();
             foreach (string line in lines)
             {
-                writer.WriteLine($"{line} ");
+                writer.Write($"{line} ");
             }
         }
 
@@ -90,15 +64,7 @@ namespace Project1
         //        string output = input.Replace(old, replace);
         //        writer.Write(output);
         //    }
-        //    writer.Close();
-
-
-        //    //var target = File
-        //    //                   .ReadLines(@"C:\MyFile.txt")
-        //    //                   .Select(line => line) //TODO: put your actual edit here
-        //    //                   .ToList(); // In order to prevent access problems
-
-        //    //File.WriteAllLines(@"C:\MyFile.txt", target);
+        //    writer.Close();        
         //}
 
         public List<string> ReadDataFromFile(string path)
