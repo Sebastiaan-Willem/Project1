@@ -54,7 +54,9 @@ namespace Project1
             Dier dier = new Dier();
             List<string> newDier = new List<string>();
 
-            dier.ID = fileReaderWriter.ReadDataFromFile(fileReaderWriter.PATH_LIST).Count + 1;
+
+            dier.ID = dierenLijst.Count + 1;
+            //dier.ID = fileReaderWriter.ReadDataFromFile(fileReaderWriter.PATH_LIST).Count + 1;
             newDier.Add(dier.ID.ToString());
 
             dier.Soort = BepaalDiersoort();
@@ -103,9 +105,43 @@ namespace Project1
 
         }
 
+        //testmethode printen van objecten.
+        public void PrintDierenLijst()
+        {
+            if (!(dierenLijst.Count == 0))
+            {
+                foreach (Dier dier in dierenLijst)
+                {
+                    Console.WriteLine($"#{dier.ID} || {dier.Naam} is een {dier.Leeftijd} jaar oude {dier.Soort}. Hij/zij/het({dier.Geslacht}) is terug te vinden in het/de {dier.Habitat} en eet graag {dier.Dieet}.");
+                }
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Er zitten momenteel geen dieren in deze lijst.");
+                System.Threading.Thread.Sleep(3000);
+                Console.ResetColor();
+            }
+
+
+        }
+
         public void PrintDierMetId(string dier)
         {
             Console.WriteLine(dier);
+        }
+        public void PrintDierMetId(int id)
+        {
+            foreach (Dier dier in dierenLijst)
+            {
+                if(dier.ID == id)
+                {
+                    Console.WriteLine($"#{dier.ID} || <<{dier.Naam}>> is een <<{dier.Leeftijd}>> jaar oude <<{dier.Soort}>>. Hij/zij/het({dier.Geslacht}) is terug te vinden in het/de <<{dier.Habitat}>> en eet graag <<{dier.Dieet}>>.");
+                }
+            }
+
+            
+            
         }
 
         public string BepaalDiersoort()
@@ -259,7 +295,7 @@ namespace Project1
                 
 
                 int openSquare = dier.IndexOf('[');
-                string dieet = dier.Substring(openSquare + 1, dier.Length - (openSquare + 1));
+                string dieet = dier.Substring(openSquare + 1, dier.Length - (openSquare + 4));
 
 
                 Dier dierobject = new Dier(id, soort, naam, geslacht, geboortedatum, leeftijd, habitat, dieet);

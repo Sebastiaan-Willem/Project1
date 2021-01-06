@@ -13,6 +13,7 @@ namespace Project1
         public void PrintMenu()
         {
             dier.MaakDierenLijstAan();
+            
 
 
             do
@@ -29,6 +30,8 @@ namespace Project1
                 Console.WriteLine("E: Verwijderen van een dier.");
                 Console.WriteLine("F: Bekijk lijst overleden dieren.");
                 Console.WriteLine("Q: Sluit het menu af");
+
+                //dier.PrintDierenLijst();
 
                 var input = Console.ReadKey();
 
@@ -51,7 +54,8 @@ namespace Project1
 
                             Console.Clear();
                             Console.WriteLine("Geef het ID van het dier dat u wenst op te vragen.");
-                            dier.PrintDierMetId(fileReaderWriter.ReadDataLineFromFile(Convert.ToInt32(Console.ReadLine())));
+                        //dier.PrintDierMetId(fileReaderWriter.ReadDataLineFromFile(Convert.ToInt32(Console.ReadLine())));
+                            dier.PrintDierMetId(Convert.ToInt32(Console.ReadLine()));
                             Console.WriteLine("Duw op Enter om terug te keren naar het menu.");
                             Console.ReadLine();
                        
