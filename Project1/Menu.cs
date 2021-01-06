@@ -12,7 +12,9 @@ namespace Project1
         
         public void PrintMenu()
         {
-            
+            dier.MaakDierenLijstAan();
+
+
             do
             {
                 Console.Clear();

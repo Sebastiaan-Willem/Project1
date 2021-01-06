@@ -25,7 +25,7 @@ namespace Project1
         public DateTime DateOfBirth { get; set; }
         public int Leeftijd { get; set; }
         public char Gender { get; set; }
-        public string Diet { get; set; }
+        public string Dieet { get; set; }
 
         public string Habitat { get; set; }
 
@@ -35,30 +35,20 @@ namespace Project1
         {
 
         }
-        public Dier(string naam, string soort, int age)
+
+        public Dier(int id, string soort, string naam, char geslacht, DateTime geboortedatum, int leeftijd, string habitat, string dieet)
         {
-            Name = naam;
+            this.id = id;
             Soort = soort;
-            Leeftijd = age;
-        }
-        public void test()
-        {
-            //Voorbeeld/test ivm objecten van Data maken
-            Dier koe = new Dier("Bessie", "Koe", 13);
-            Dier paard = new Dier();
-            Dier zeemeeuw = new Dier();
-            dierenLijst.Add(koe);
-            dierenLijst.Add(paard);
-            dierenLijst.Add(zeemeeuw);
-
-
-
-            foreach (Dier dier in dierenLijst)
-            {
-                Console.WriteLine($"{dier.Name} is een {dier.Soort} en is {dier.Leeftijd} jaar oud.");
-            }
+            Naam = naam;
+            Geslacht = geslacht;
+            Geboortedatum = geboortedatum;
+            Leeftijd = leeftijd;
+            Habitat = habitat;
+            Dieet = dieet;
         }
 
+       
         public void VoegDierToe()
         {
             Dier dier = new Dier();
@@ -85,8 +75,8 @@ namespace Project1
             dier.Habitat = BepaalHabitat();
             newDier.Add(dier.Habitat);
 
-            dier.Diet = BepaalDieet();
-            newDier.Add("[" + dier.Diet + "]");
+            dier.Dieet = BepaalDieet();
+            newDier.Add("[" + dier.Dieet + "]");
 
             fileReaderWriter.WriteDataToFile(newDier.ToArray());
 
@@ -224,6 +214,9 @@ namespace Project1
         public double Gewicht { get; set; }
         public double Lengte { get; set; } 
         public DateTime InschrijvingsDatum { get; set; }
+        public string Naam { get; }
+        public char Geslacht { get; }
+        public DateTime Geboortedatum { get; }
 
         public void WijzigData()
         {
@@ -246,6 +239,42 @@ namespace Project1
             Console.WriteLine("Geef het ID van het dier dat u wenst te verwijderen.");
             fileReaderWriter.MoveDataFromFile(Convert.ToInt32(Console.ReadLine()));
             Console.WriteLine("ByeBye :(");
+        }
+
+        public void MaakDierenLijstAan()
+        {
+            List<string> dierenLijstTwee = fileReaderWriter.ReadDataFromFile(fileReaderWriter.PATH_LIST);
+
+            foreach (string dier in dierenLijstTwee)
+            {
+                string[] dierenInfoArray = dier.Split(" ");
+
+                int id = Convert.ToInt32(dierenInfoArray[0]);
+                string soort = dierenInfoArray[1];
+                string naam = dierenInfoArray[2];
+                char geslacht = Convert.ToChar(dierenInfoArray[3]);
+                DateTime geboortedatum = Convert.ToDateTime(dierenInfoArray[4]);
+                int leeftijd = Convert.ToInt32(dierenInfoArray[5]);
+                string habitat = dierenInfoArray[6];
+                
+
+                int openSquare = dier.IndexOf('[');
+                string dieet = dier.Substring(openSquare + 1, dier.Length - (openSquare + 1));
+
+
+                Dier dierobject = new Dier(id, soort, naam, geslacht, geboortedatum, leeftijd, habitat, dieet);
+
+                dierenLijst.Add(dierobject);
+
+
+                //foreach (Dier dier in dierenLijst)
+                //{
+                //    Console.WriteLine($"{dier.Name} is een {dier.Soort} en is {dier.Leeftijd} jaar oud.");
+                //}
+            }
+
+
+            
         }
     }
 }
