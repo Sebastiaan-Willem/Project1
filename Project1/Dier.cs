@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Project1
@@ -21,10 +22,10 @@ namespace Project1
             set { id = value; }
         }
         public string Soort { get; set; }
-        public string Name { get; set; }
-        public DateTime DateOfBirth { get; set; }
-        public int Leeftijd { get; set; }
-        public char Gender { get; set; }
+        public string Naam { get; set; }
+        public DateTime Geboortedatum { get; set; }
+       public int Leeftijd { get; set; }
+        public char Geslacht { get; set; }
         public string Dieet { get; set; }
 
         public string Habitat { get; set; }
@@ -54,7 +55,7 @@ namespace Project1
             Dier dier = new Dier();
             List<string> newDier = new List<string>();
 
-
+            //+1 proberen nemen van hoogste ID in de lijst
             dier.ID = dierenLijst.Count + 1;
             //dier.ID = fileReaderWriter.ReadDataFromFile(fileReaderWriter.PATH_LIST).Count + 1;
             newDier.Add(dier.ID.ToString());
@@ -62,16 +63,16 @@ namespace Project1
             dier.Soort = BepaalDiersoort();
             newDier.Add(dier.Soort);
 
-            dier.Name = BepaalEigennaam();
-            newDier.Add(dier.Name);
+            dier.Naam = BepaalEigennaam();
+            newDier.Add(dier.Naam);
 
-            dier.Gender = BepaalGeslacht();
-            newDier.Add(dier.Gender.ToString());
+            dier.Geslacht = BepaalGeslacht();
+            newDier.Add(dier.Geslacht.ToString());
 
-            dier.DateOfBirth = BepaalGeboortedatum();
-            newDier.Add(dier.DateOfBirth.ToString("dd/MM/yyyy"));
+            dier.Geboortedatum = BepaalGeboortedatum();
+            newDier.Add(dier.Geboortedatum.ToString("dd/MM/yyyy"));
 
-            dier.Leeftijd = BerekenLeeftijd(dier.DateOfBirth);
+            dier.Leeftijd = BerekenLeeftijd(dier.Geboortedatum);
             newDier.Add(dier.Leeftijd.ToString());
 
             dier.Habitat = BepaalHabitat();
@@ -83,6 +84,25 @@ namespace Project1
             fileReaderWriter.WriteDataToFile(newDier.ToArray());
 
             dierenLijst.Add(dier);
+        }
+
+        //public Dier GetDierMetID(int id)
+        //{
+        //    Dier returnDier;
+        //    foreach (Dier dier in dierenLijst)
+        //    {
+        //        if (dier.ID == id)
+        //        {
+        //            returnDier = dier;
+        //            return returnDier;
+        //        }
+        //    }
+        //    return null;
+        //}
+
+        public List<Dier> GetDierenLijst()
+        {
+            return dierenLijst;
         }
 
         public void PrintDierenLijst(List<string> dieren)
@@ -126,10 +146,12 @@ namespace Project1
 
         }
 
+        //OLD
         public void PrintDierMetId(string dier)
         {
             Console.WriteLine(dier);
         }
+        //NEW
         public void PrintDierMetId(int id)
         {
             foreach (Dier dier in dierenLijst)
@@ -250,37 +272,64 @@ namespace Project1
         public double Gewicht { get; set; }
         public double Lengte { get; set; } 
         public DateTime InschrijvingsDatum { get; set; }
-        public string Naam { get; }
-        public char Geslacht { get; }
-        public DateTime Geboortedatum { get; }
+        
 
         public void WijzigData()
         {
             //NEW
-            //Console.WriteLine("Geef het ID van het dier dat u wenst aan te passen.");
-            //int tempID = Convert.ToInt32(Console.ReadLine());
-            //PrintDierMetId(tempID);
-
-            //Console.WriteLine("Wat wenst u aan te passen?");
-            //string oldData = Console.ReadLine();
-
-            //Console.WriteLine("Waardoor wenst u dit te vervangen?");
-            //string newData = Console.ReadLine();
-
-            //foreach (Dier dier in dierenLijst)
-            //{
-            //    switch (dier)
-            //    {
-            //        case dier.
-            //        default:
-            //            break;
-            //    }
-            //}
-
-            //fileReaderWriter.UpdateDataToFile();
-            //PrintDierMetId(fileReaderWriter.ReadDataLineFromFile(tempID));
+            Console.WriteLine("Geef het ID van het dier dat u wenst aan te passen.");
+            bool test = int.TryParse(Console.ReadLine(), out int tempID);
+            if(test)
+            {
+                PrintDierMetId(tempID);
 
 
+                Console.WriteLine("Wat wenst u aan te passen? (maak een keuze op basis van volgende opties)");
+                Console.WriteLine("1 = Soort | 2 = Naam | 3 = Geslacht | 4 = Geboortedatum | 5 = Habitat | 6 = Dieet");
+                bool parsable = int.TryParse(Console.ReadLine(), out int userChoice);
+
+
+
+                foreach (Dier dier in dierenLijst)
+                {
+                    if (dier.ID == tempID)
+                    {
+                        do
+                        {
+                            switch (userChoice)
+                            {
+                                case 1:
+                                    dier.Soort = BepaalDiersoort();
+                                    break;
+                                case 2:
+                                    dier.Naam = BepaalEigennaam();
+                                    break;
+                                case 3:
+                                    dier.Geslacht = BepaalGeslacht();
+                                    break;
+                                case 4:
+                                    dier.Geboortedatum = BepaalGeboortedatum();
+                                    dier.Leeftijd = BerekenLeeftijd(dier.Geboortedatum);
+                                    break;
+                                case 5:
+                                    dier.Habitat = BepaalHabitat();
+                                    break;
+                                case 6:
+                                    dier.Dieet = BepaalDieet();
+                                    break;
+                                default:
+                                    Console.WriteLine("Gelieve een geldige optie te selecteren uit het menu.");
+                                    break;
+                            }
+                        }
+                        while (parsable == false);
+                    }
+                }
+
+                fileReaderWriter.UpdateDataToFile(dierenLijst.ToArray());
+                Console.WriteLine("De data werd succesvol geupdate!");
+                PrintDierMetId(tempID);
+            }
             //OLD
 
             //Console.WriteLine("Geef het ID van het dier dat u wenst aan te passen.");
@@ -302,11 +351,23 @@ namespace Project1
             Console.WriteLine("Geef het ID van het dier dat u wenst te verwijderen.");
             fileReaderWriter.MoveDataFromFile(Convert.ToInt32(Console.ReadLine()));
             Console.WriteLine("ByeBye :(");
+
+            //if(dierenLijst.Contains())
+            //{
+            //    foreach (Dier dier in dierenLijst)
+            //    {
+            //        if(dier.Soort == "Panda")
+            //            newlist.add(dier)
+            //    }
+            //}
+
+            //return newlist;
         }
 
         public void MaakDierenLijstAan()
         {
             List<string> dierenLijstTwee = fileReaderWriter.ReadDataFromFile(fileReaderWriter.PATH_LIST);
+            dierenLijstTwee.RemoveAll(dier => dier.Length == 0);
 
             foreach (string dier in dierenLijstTwee)
             {
@@ -322,7 +383,7 @@ namespace Project1
                 
 
                 int openSquare = dier.IndexOf('[');
-                string dieet = dier.Substring(openSquare + 1, dier.Length - (openSquare + 4));
+                string dieet = dier.Substring(openSquare + 1, dier.Length - (openSquare + 3));
 
 
                 Dier dierobject = new Dier(id, soort, naam, geslacht, geboortedatum, leeftijd, habitat, dieet);
@@ -330,14 +391,11 @@ namespace Project1
                 dierenLijst.Add(dierobject);
 
 
-                //foreach (Dier dier in dierenLijst)
-                //{
-                //    Console.WriteLine($"{dier.Name} is een {dier.Soort} en is {dier.Leeftijd} jaar oud.");
-                //}
+                
             }
 
+            dierenLijst = dierenLijst.OrderBy(dier => dier.ID).ToList();
 
-            
         }
     }
 }

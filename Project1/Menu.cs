@@ -88,6 +88,7 @@ namespace Project1
 
                     case ConsoleKey.Q:
 
+                        //fileReaderWriter.UpdateDataToFile(dier.GetDierenLijst().ToArray());
                             Environment.Exit(0);
                         break;
 
