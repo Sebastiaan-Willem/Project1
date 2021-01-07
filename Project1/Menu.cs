@@ -18,18 +18,8 @@ namespace Project1
             {
                 Console.Clear();
 
-                Console.WriteLine("Welkom in Dierentuin WoopDeeZoo!");
-                Console.WriteLine("Gelieve een optie te selecteren:");
-                Console.WriteLine("***********************************************");
-                Console.WriteLine("A: Voeg een dier toe aan de database.");
-                Console.WriteLine("B: Bekijk de database van dierentuin Ikweetgeennaam.");
-                Console.WriteLine("C: Zoekfuncties");
-                Console.WriteLine("D: Wijzig Data van een dier.");
-                Console.WriteLine("E: Verwijderen van een dier.");
-                Console.WriteLine("F: Bekijk lijst overleden dieren.");
-                Console.WriteLine("Q: Sluit het menu af");
-
-
+                PrintBanner();
+                PrintMenuSelectie();
                 var input = Console.ReadKey();
 
                 switch (input.Key)
@@ -69,7 +59,6 @@ namespace Project1
                     case ConsoleKey.E:
 
                             Console.Clear();
-
                             dier.VerwijderDier();
                             Console.WriteLine("Duw op Enter om terug te keren naar het menu.");
                             Console.ReadLine();
@@ -106,6 +95,7 @@ namespace Project1
         public void PrintTrein()
         {
             PlayTrainSound();
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             for (int j = 0; j < 15; j++)
             {
 
@@ -139,6 +129,7 @@ namespace Project1
                     break;
                 }
             }
+            Console.ResetColor();
             Console.ReadLine();
         }
 
@@ -153,6 +144,42 @@ namespace Project1
             string train = "rainforest_ambience.mp3";
             player.settings.volume = 50;
             player.URL = path + train;
+        }
+
+        public void PrintBanner()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            string banner = @"
+                
+        .--.      .--.    ,-----.        ,-----.    .-------.  ______         .-''-.      .-''-.    ____..--'    ,-----.        ,-----.     
+        |  |_     |  |  .'  .-,  '.    .'  .-,  '.  \  _(`)_ \|    _ `''.   .'_ _   \   .'_ _   \  |        |  .'  .-,  '.    .'  .-,  '.   
+        | _( )_   |  | / ,-.|  \ _ \  / ,-.|  \ _ \ | (_ o._)|| _ | ) _  \ / ( ` )   ' / ( ` )   ' |   .-'  ' / ,-.|  \ _ \  / ,-.|  \ _ \  
+        |(_ o _)  |  |;  \  '_ /  | :;  \  '_ /  | :|  (_,_) /|( ''_'  ) |. (_ o _)  |. (_ o _)  | |.-'.'   /;  \  '_ /  | :;  \  '_ /  | : 
+        | (_,_) \ |  ||  _`,/ \ _/  ||  _`,/ \ _/  ||   '-.-' | . (_) `. ||  (_,_)___||  (_,_)___|    /   _/ |  _`,/ \ _/  ||  _`,/ \ _/  | 
+        |  |/    \|  |: (  '\_/ \   ;: (  '\_/ \   ;|   |     |(_    ._) ''  \   .---.'  \   .---.  .'._( )_ : (  '\_/ \   ;: (  '\_/ \   ; 
+        |  '  /\  `  | \ `'/  \  ) /  \ `'/  \  ) / |   |     |  (_.\.' /  \  `-'    / \  `-'    /.'  (_'o._) \ `'/  \  ) /  \ `'/  \  ) /  
+        |    /  \    |  '. \_/``'.'    '. \_/``'.'  /   )     |       .'    \       /   \       / |    (_,_)|  '. \_/``'.'    '. \_/``'.'   
+        `---'    `---`    '-----'        '-----'    `---'     '-----'`       `'-..-'     `'-..-'  |_________|    '-----'        '-----'     
+                                                                                                                                    
+
+                ";
+
+            Console.WriteLine(banner);
+            Console.ResetColor();
+            
+        }
+        public void PrintMenuSelectie()
+        {
+            Console.WriteLine("Welkom in Dierentuin WoopDeeZoo!");
+            Console.WriteLine("Gelieve een optie te selecteren:");
+            Console.WriteLine("***********************************************");
+            Console.WriteLine("A: Voeg een dier toe aan de database.");
+            Console.WriteLine("B: Bekijk de database van dierentuin Ikweetgeennaam.");
+            Console.WriteLine("C: Zoekfuncties");
+            Console.WriteLine("D: Wijzig Data van een dier.");
+            Console.WriteLine("E: Verwijderen van een dier.");
+            Console.WriteLine("F: Bekijk lijst overleden dieren.");
+            Console.WriteLine("Q: Sluit het programma af.");
         }
 
     }
