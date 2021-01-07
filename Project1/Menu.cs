@@ -106,7 +106,7 @@ namespace Project1
         public void PrintTrein()
         {
             PlayTrainSound();
-            for (int j = 0; j < 30; j++)
+            for (int j = 0; j < 15; j++)
             {
 
                 Console.Clear();
@@ -130,7 +130,7 @@ namespace Project1
                 Console.WriteLine(margin + "      [________]_|__|________)< ");
                 Console.WriteLine(margin + "      [________]_|__|________)< ");
                 Console.WriteLine(margin + "       oo\\_  oo  'oo OOOO-| oo\\_");
-                Console.WriteLine("   +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+");
+                Console.WriteLine("   +--+--+--+--+--+--+--+--+--+--+--+--+--+--+");
 
                 System.Threading.Thread.Sleep(500);
             }
