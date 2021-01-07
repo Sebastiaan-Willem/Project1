@@ -90,7 +90,7 @@ namespace Project1
 
             foreach (Dier dier in dierenLijst)
             {
-                if(dier.ID > 0)
+                if(dier.ID > uniekeID)
                 {
                     uniekeID = dier.ID;
                 }
