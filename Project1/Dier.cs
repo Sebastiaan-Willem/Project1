@@ -328,7 +328,6 @@ namespace Project1
             //fileReaderWriter.EditData(tempID, oldData, newData);
             //PrintDierMetId(fileReaderWriter.ReadDataLineFromFile(tempID));
         }
-
         public void VerwijderDier()
         {
             Console.WriteLine("Geef het ID van het dier dat u wenst te verwijderen.");
@@ -356,7 +355,6 @@ namespace Project1
             fileReaderWriter.UpdateDataToFile(dierenLijst.ToArray());
             
         }
-
         public void MaakDierenLijstAan()
         {
             List<string> dierenLijstTwee = fileReaderWriter.ReadDataFromFile(fileReaderWriter.PATH_LIST);

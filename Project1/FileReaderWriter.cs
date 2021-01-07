@@ -112,20 +112,5 @@ namespace Project1
             WriteDataToFile(deadData, PATH_DEAD);
         }
 
-        public void WriteSeparator(string path)
-        {
-            using StreamWriter writer = new StreamWriter(path, true);
-            writer.WriteLine("---------------------------------------------------------------------");
-        }
-
-        public void WriteHeader(string path)
-        {
-            using StreamWriter writer = new StreamWriter(path, true);
-            writer.WriteLine("---------------------------------------------------------------------");
-            writer.WriteLine("------------------------<<< DIEREN LIJST >>>-------------------------");
-            writer.WriteLine("---------------------------------------------------------------------");
-        }
-
-
     }
 }

@@ -77,8 +77,6 @@ namespace Project1
                     case ConsoleKey.F:
 
                             Console.Clear();
-
-                            Console.Clear();
                             dier.PrintDierenLijst(fileReaderWriter.ReadDataFromFile(fileReaderWriter.PATH_DEAD));
                             Console.WriteLine("Duw op Enter om terug te keren naar het menu.");
                             Console.ReadLine();
