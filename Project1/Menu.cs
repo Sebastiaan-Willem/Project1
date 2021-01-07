@@ -23,13 +23,12 @@ namespace Project1
                 Console.WriteLine("***********************************************");
                 Console.WriteLine("A: Voeg een dier toe aan de database.");
                 Console.WriteLine("B: Bekijk de database van dierentuin Ikweetgeennaam.");
-                Console.WriteLine("C: Bekijk data van een dier op basis van ID.");
+                Console.WriteLine("C: Zoekfuncties");
                 Console.WriteLine("D: Wijzig Data van een dier.");
                 Console.WriteLine("E: Verwijderen van een dier.");
                 Console.WriteLine("F: Bekijk lijst overleden dieren.");
                 Console.WriteLine("Q: Sluit het menu af");
 
-                //dier.PrintDierenLijst();
 
                 var input = Console.ReadKey();
 
@@ -50,9 +49,10 @@ namespace Project1
                         break;
                     case ConsoleKey.C:
 
+                        //nieuwe methode zoekfuncties, op basis van ID, naam en habitat
+
                             Console.Clear();
                             Console.WriteLine("Geef het ID van het dier dat u wenst op te vragen.");
-                        //dier.PrintDierMetId(fileReaderWriter.ReadDataLineFromFile(Convert.ToInt32(Console.ReadLine())));
                             dier.PrintDierMetId(Convert.ToInt32(Console.ReadLine()));
                             Console.WriteLine("Duw op Enter om terug te keren naar het menu.");
                             Console.ReadLine();
@@ -133,6 +133,11 @@ namespace Project1
                 Console.WriteLine("   +--+--+--+--+--+--+--+--+--+--+--+--+--+--+████████████████████████████");
 
                 System.Threading.Thread.Sleep(500);
+
+                if (Console.KeyAvailable)
+                {
+                    break;
+                }
             }
             Console.ReadLine();
         }

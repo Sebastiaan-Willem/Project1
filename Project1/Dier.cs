@@ -143,8 +143,6 @@ namespace Project1
                 Console.ResetColor();
             }
         }
-       
-
 
 
         public void PrintDierenLijst(List<Dier> GefilterdeLijst)
@@ -153,8 +151,6 @@ namespace Project1
             {
                 foreach (Dier dier in GefilterdeLijst)
                 {
-                    //Console.WriteLine($"Er zijn {} resultaten voor {}:");
-
                     Console.WriteLine($"#{dier.ID} || {dier.Naam} is een {dier.Leeftijd} jaar oude {dier.Soort}. Hij/zij/het({dier.Geslacht}) is terug te vinden in het/de {dier.Habitat} en eet graag {dier.Dieet}.");
                 }
             }
@@ -422,5 +418,73 @@ namespace Project1
             dierenLijst = dierenLijst.OrderBy(dier => dier.ID).ToList();
 
         }
+
+
+
+        public void ZoekenOpInput(string soort)
+        {
+            //Console.WriteLine("Op welke diersoort wenst u te zoeken?");
+
+            //string gezochteproperty = Console.ReadLine().ToUpper();
+            List<Dier> gefilterdeLijst = new List<Dier>();
+
+            foreach (Dier dier in dierenLijst)
+            {
+                if (dier.Soort == soort)
+                {
+                    gefilterdeLijst.Add(dier);
+                }
+            }
+
+            Console.WriteLine($"Er zijn {gefilterdeLijst.Count} resultaten voor {soort}:");
+            Console.WriteLine();
+            PrintDierenLijst(gefilterdeLijst);
+        }
+
+
+        //public void ZoekenOpInput(int id)
+        //{
+        //    //Console.WriteLine("Op welke diersoort wenst u te zoeken?");
+
+        //    //string gezochteproperty = Console.ReadLine().ToUpper();
+        //    List<Dier> gefilterdeLijst = new List<Dier>();
+
+        //    foreach (Dier dier in dierenLijst)
+        //    {
+        //        if (dier.ID == id)
+        //        {
+        //            gefilterdeLijst.Add(dier);
+        //        }
+        //    }
+
+        //    Console.WriteLine($"Er zijn {gefilterdeLijst.Count} resultaten voor {id}:");
+        //    Console.WriteLine();
+        //    PrintDierenLijst(gefilterdeLijst);
+        //}
+
+
+        //public void ZoekenOpInput(enum habitat)
+        //{
+        //    //Console.WriteLine("Op welke diersoort wenst u te zoeken?");
+
+        //    //string gezochteproperty = Console.ReadLine().ToUpper();
+        //    List<Dier> gefilterdeLijst = new List<Dier>();
+
+        //    foreach (Dier dier in dierenLijst)
+        //    {
+        //        if (dier.Soort == soort)
+        //        {
+        //            gefilterdeLijst.Add(dier);
+        //        }
+        //    }
+
+        //    Console.WriteLine($"Er zijn {gefilterdeLijst.Count} resultaten voor {soort}:");
+        //    Console.WriteLine();
+        //    PrintDierenLijst(gefilterdeLijst);
+        //}
+
+
+
+
     }
 }
