@@ -14,8 +14,6 @@ namespace Project1
         {
             dier.MaakDierenLijstAan();
             
-
-
             do
             {
                 Console.Clear();
