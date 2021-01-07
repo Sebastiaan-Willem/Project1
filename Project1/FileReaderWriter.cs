@@ -43,13 +43,12 @@ namespace Project1
             }
         }
 
-        public void UpdateDataToFile(string[] lines)
+        public void UpdateDataToFile(Dier[] lines)
         {
             using StreamWriter writer = new StreamWriter(PATH_LIST); //true om nieuwe tekst toe te voegen ipv overschrijven.
-            writer.WriteLine();
-            foreach (string line in lines)
+            foreach (Dier dier in lines)
             {
-                writer.Write($"{line} ");
+                writer.WriteLine($"{dier.ID} {dier.Soort} {dier.Naam} {dier.Geslacht} {dier.Geboortedatum.ToString("dd/MM/yyyy")} {dier.Leeftijd} {dier.Habitat} [{dier.Dieet}] ");
             }
         }
 
