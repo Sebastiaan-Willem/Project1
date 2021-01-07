@@ -143,17 +143,19 @@ namespace Project1
                 System.Threading.Thread.Sleep(3000);
                 Console.ResetColor();
             }
-
-
         }
+       
 
-        //testmethode printen van objecten.
-        public void PrintDierenLijst()
+
+
+        public void PrintDierenLijst(List<Dier> GefilterdeLijst)
         {
-            if (!(dierenLijst.Count == 0))
+            if (!(GefilterdeLijst.Count == 0))
             {
-                foreach (Dier dier in dierenLijst)
+                foreach (Dier dier in GefilterdeLijst)
                 {
+                    //Console.WriteLine($"Er zijn {} resultaten voor {}:");
+
                     Console.WriteLine($"#{dier.ID} || {dier.Naam} is een {dier.Leeftijd} jaar oude {dier.Soort}. Hij/zij/het({dier.Geslacht}) is terug te vinden in het/de {dier.Habitat} en eet graag {dier.Dieet}.");
                 }
             }
@@ -164,8 +166,6 @@ namespace Project1
                 System.Threading.Thread.Sleep(3000);
                 Console.ResetColor();
             }
-
-
         }
          
         public void PrintDierMetId(int id)

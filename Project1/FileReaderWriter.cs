@@ -96,15 +96,6 @@ namespace Project1
             return line;
         }
 
-        public List<String> SearchDataInDocument(string data)
-        {
-            //TODO
-
-            List<string> lines = new List<string>();
-
-            return lines;
-        }
-
         public void WriteDataToDeadFile(string dier)
         {
             string deadData = dier;
