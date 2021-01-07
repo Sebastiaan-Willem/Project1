@@ -95,7 +95,6 @@ namespace Project1
                     uniekeID = dier.ID;
                 }
             }
-
             return uniekeID +1;
         }
 
