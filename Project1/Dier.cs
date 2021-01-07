@@ -54,10 +54,8 @@ namespace Project1
         {
             Dier dier = new Dier();
             List<string> newDier = new List<string>();
-
-            //+1 proberen nemen van hoogste ID in de lijst
-            dier.ID = dierenLijst.Count + 1;
-            //dier.ID = fileReaderWriter.ReadDataFromFile(fileReaderWriter.PATH_LIST).Count + 1;
+                       
+            dier.ID = GetUniekeID();
             newDier.Add(dier.ID.ToString());
 
             dier.Soort = BepaalDiersoort();
@@ -84,6 +82,44 @@ namespace Project1
             fileReaderWriter.WriteDataToFile(newDier.ToArray());
 
             dierenLijst.Add(dier);
+        }
+
+        public int GetUniekeID()
+        {
+            int uniekeID = 0;
+
+            foreach (Dier dier in dierenLijst)
+            {
+                if(dier.ID > 0)
+                {
+                    uniekeID = dier.ID;
+                }
+            }
+
+            return uniekeID +1;
+        }
+
+        //Nuttig?
+        public Dier GetDierMetId(int id)
+        {
+            if (!(dierenLijst.Count == 0))
+            {
+                foreach (Dier dier in dierenLijst)
+                {
+                    if(dier.id == id)
+                    {
+                        return dier;
+                    }                    
+                }
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Er zitten momenteel geen dieren in deze lijst.");
+                System.Threading.Thread.Sleep(3000);
+                Console.ResetColor();
+            }
+            return null;
         }
 
         public List<Dier> GetDierenLijst()
