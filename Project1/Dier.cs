@@ -24,7 +24,7 @@ namespace Project1
         public string Soort { get; set; }
         public string Naam { get; set; }
         public DateTime Geboortedatum { get; set; }
-       public int Leeftijd { get; set; }
+        public int Leeftijd { get; set; }
         public char Geslacht { get; set; }
         public string Dieet { get; set; }
 
