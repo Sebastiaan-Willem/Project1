@@ -10,6 +10,39 @@ namespace Project1
         Dier dier = new Dier();
         FileReaderWriter fileReaderWriter = new FileReaderWriter();
         
+        public void PrintTrein()
+        {
+            for (int j = 0; j < 30; j++)
+            {
+               
+                Console.Clear();
+
+                // steam
+                Console.WriteLine("   ...Welcome, press ENTER when you've arrived at...");
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.Write("                  WOOPDEEZ ");
+
+                for (int s = 0; s < j / 2; s++)
+                {
+                    Console.Write("O ");
+                }
+
+                Console.WriteLine();
+
+                var margin = "".PadLeft(j);
+                Console.WriteLine(margin + "                _____      o");
+                Console.WriteLine(margin + "       ____====  ]OO|_n_n__][.");
+                Console.WriteLine(margin + "      [________]_|__|________)< ");
+                Console.WriteLine(margin + "      [________]_|__|________)< ");
+                Console.WriteLine(margin + "       oo\\_  oo  'oo OOOO-| oo\\_");
+                Console.WriteLine("   +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+");
+
+                System.Threading.Thread.Sleep(500);
+            }
+            Console.ReadLine();
+        }
+
         public void PrintMenu()
         {
             dier.MaakDierenLijstAan();

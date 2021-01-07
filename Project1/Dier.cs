@@ -274,7 +274,6 @@ namespace Project1
                     {
                         do
                         {
-                            
                             parsable = int.TryParse(Console.ReadLine(), out int userChoice);
 
                             switch (userChoice)
