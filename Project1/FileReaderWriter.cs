@@ -61,21 +61,6 @@ namespace Project1
             WriteDataToFile(lines.ToArray());
         }
 
-        //public void EditData(int id, string old, string replace)
-        //{
-        //    //dubbele streamreader + writer = conflict 
-        //    //using StreamReader reader = new StreamReader(PATH_LIST);
-        //    //eventueel editen op een specifieke regel op basis van ID?
-        //    string input = ReadDataLineFromFile(id);
-
-        //    using StreamWriter writer = new StreamWriter(PATH_LIST, true);
-        //    {
-        //        string output = input.Replace(old, replace);
-        //        writer.Write(output);
-        //    }
-        //    writer.Close();        
-        //}
-
         public List<string> ReadDataFromFile(string path)
         {
             using StreamReader reader = new StreamReader(path);
@@ -120,16 +105,11 @@ namespace Project1
             return lines;
         }
 
-        public void DeleteDataFromFile()
+        public void WriteDataToDeadFile(string dier)
         {
-            using StreamWriter writer = new StreamWriter(pATH_LIST, true);
-        }
-
-        public void MoveDataFromFile(int id)
-        {
-            string copyData = ReadDataLineFromFile(id);
-            copyData += dateTime;
-            WriteDataToFile(copyData, PATH_DEAD);
+            string deadData = dier;
+            deadData += dateTime;
+            WriteDataToFile(deadData, PATH_DEAD);
         }
 
         public void WriteSeparator(string path)

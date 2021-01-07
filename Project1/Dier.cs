@@ -86,20 +86,6 @@ namespace Project1
             dierenLijst.Add(dier);
         }
 
-        //public Dier GetDierMetID(int id)
-        //{
-        //    Dier returnDier;
-        //    foreach (Dier dier in dierenLijst)
-        //    {
-        //        if (dier.ID == id)
-        //        {
-        //            returnDier = dier;
-        //            return returnDier;
-        //        }
-        //    }
-        //    return null;
-        //}
-
         public List<Dier> GetDierenLijst()
         {
             return dierenLijst;
@@ -145,13 +131,7 @@ namespace Project1
 
 
         }
-
-        //OLD
-        public void PrintDierMetId(string dier)
-        {
-            Console.WriteLine(dier);
-        }
-        //NEW
+         
         public void PrintDierMetId(int id)
         {
             foreach (Dier dier in dierenLijst)
@@ -160,10 +140,14 @@ namespace Project1
                 {
                     Console.WriteLine($"#{dier.ID} || <<{dier.Naam}>> is een <<{dier.Leeftijd}>> jaar oude <<{dier.Soort}>>. Hij/zij/het({dier.Geslacht}) is terug te vinden in het/de <<{dier.Habitat}>> en eet graag <<{dier.Dieet}>>.");
                 }
-            }
+            }           
+            
+        }
+        public string DierToString(Dier dier)
+        {
+            string dierAlsString = $"{dier.ID} {dier.Soort} {dier.Naam} {dier.Geslacht} {dier.Geboortedatum.ToString("dd/MM/yyyy")} {dier.Leeftijd} {dier.Habitat} [{dier.Dieet}] ";
 
-            
-            
+            return dierAlsString;
         }
 
         public string BepaalDiersoort()
@@ -260,12 +244,9 @@ namespace Project1
             }
 
 
-
-
         //------------------------------------------------------------
         //EXTRA
         //------------------------------------------------------------
-
 
         public double Kosten { get; set; }
         public string FamilyTree { get; set; }
@@ -279,16 +260,13 @@ namespace Project1
             //NEW
             Console.WriteLine("Geef het ID van het dier dat u wenst aan te passen.");
             bool test = int.TryParse(Console.ReadLine(), out int tempID);
+
             if(test)
             {
                 PrintDierMetId(tempID);
-
-
+                bool parsable;
                 Console.WriteLine("Wat wenst u aan te passen? (maak een keuze op basis van volgende opties)");
                 Console.WriteLine("1 = Soort | 2 = Naam | 3 = Geslacht | 4 = Geboortedatum | 5 = Habitat | 6 = Dieet");
-                bool parsable = int.TryParse(Console.ReadLine(), out int userChoice);
-
-
 
                 foreach (Dier dier in dierenLijst)
                 {
@@ -296,6 +274,9 @@ namespace Project1
                     {
                         do
                         {
+                            
+                            parsable = int.TryParse(Console.ReadLine(), out int userChoice);
+
                             switch (userChoice)
                             {
                                 case 1:
@@ -318,7 +299,9 @@ namespace Project1
                                     dier.Dieet = BepaalDieet();
                                     break;
                                 default:
+                                    Console.ForegroundColor = ConsoleColor.Red;
                                     Console.WriteLine("Gelieve een geldige optie te selecteren uit het menu.");
+                                    Console.ResetColor();
                                     break;
                             }
                         }
@@ -349,19 +332,29 @@ namespace Project1
         public void VerwijderDier()
         {
             Console.WriteLine("Geef het ID van het dier dat u wenst te verwijderen.");
-            fileReaderWriter.MoveDataFromFile(Convert.ToInt32(Console.ReadLine()));
-            Console.WriteLine("ByeBye :(");
-
-            //if(dierenLijst.Contains())
-            //{
-            //    foreach (Dier dier in dierenLijst)
-            //    {
-            //        if(dier.Soort == "Panda")
-            //            newlist.add(dier)
-            //    }
-            //}
-
-            //return newlist;
+            bool test = int.TryParse(Console.ReadLine(), out int tempID);
+            if(test)
+            {
+                foreach (Dier dier in dierenLijst.ToList()) //ToList() toegevoegd wegens "Exception: Collection was modified; enumeration operation may not execute."
+                {
+                    if(dier.ID == tempID)
+                    {
+                        fileReaderWriter.WriteDataToDeadFile(DierToString(dier));
+                        string tempName = dier.Naam;
+                        dierenLijst.Remove(dier);
+                        Console.WriteLine($"{tempName} will be missed.. :( ");
+                    }
+                }
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("--De gegeven input is incorrect--");
+                Console.ResetColor();
+            }
+                        
+            fileReaderWriter.UpdateDataToFile(dierenLijst.ToArray());
+            
         }
 
         public void MaakDierenLijstAan()

@@ -1,7 +1,6 @@
-6 PANDA Po M 01/01/2004 17 Safaripark [Bamboo] 
 7 PANDA Lili V 12/05/2004 16 Safaripark [Bamboo] 
 8 PANDA Cho M 26/04/1984 36 Safaripark [Bamboo, Fruit] 
-9 EZEL Seba M 01/01/2000 21 Kinderboerderij [Wortels, Hooi, Stro] 
+9 EZEL Sebastiaan M 01/01/2000 21 Kinderboerderij [Wortels, Hooi, Stro] 
 23 Kat Katrina V 01/01/2021 0 Aquarium [Vis, Vlees] 
 25 BEVER Bart M 02/05/2020 0 Safaripark [geenideewateenbevereet] 
 26 ZEEEGEL Ziem V 06/04/2019 1 Aquarium [plankton] 
