@@ -1,19 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using WMPLib;
 
 namespace Project1
 {
     class Menu
     {
-
+        private WindowsMediaPlayer player = new WindowsMediaPlayer();
         Dier dier = new Dier();
         FileReaderWriter fileReaderWriter = new FileReaderWriter();
-        
+        private readonly string path = $"C:\\Users\\{Environment.UserName}\\source\\repos\\Project1\\Project1\\sounds\\";
+
         public void PrintMenu()
         {
             dier.MaakDierenLijstAan();
-            
+            PlayJungleSound();
             do
             {
                 Console.Clear();
@@ -105,6 +105,7 @@ namespace Project1
 
         public void PrintTrein()
         {
+            PlayTrainSound();
             for (int j = 0; j < 30; j++)
             {
 
@@ -136,6 +137,19 @@ namespace Project1
             Console.ReadLine();
         }
 
+        public void PlayTrainSound()
+        {
+            string train = "Train_Horn.mp3";
+            player.settings.volume = 50;
+            player.URL = path + train;
+        }
+        public void PlayJungleSound()
+        {
+            string train = "rainforest_ambience.mp3";
+            player.settings.volume = 50;
+            player.URL = path + train;
+        }
 
     }
+    
 }
