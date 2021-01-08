@@ -10,3 +10,5 @@
 31 TOEKAN David M 02/09/2004 16 Vogelparadijs [Bessen, insecten] 
 32 KAT Billie M 02/04/2020 0 Vogelparadijs [Parkietjes, Catisfaction] 
 33 WALRUS Manfred M 01/12/2000 20 Aquarium [vis] 
+34 WALRUS Winifred X 20/12/9999 -7979 Aquarium [vis] 
+35 TEST test M 12/12/2000 20 Aquarium [test] 

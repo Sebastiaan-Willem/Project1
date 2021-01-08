@@ -34,7 +34,7 @@ namespace Project1
 
                         Console.Clear();
                         dier.PrintDierenLijst(fileReaderWriter.ReadDataFromFile(fileReaderWriter.PATH_LIST));
-                        Console.WriteLine("Duw op Enter om terug te keren naar het menu.");
+                        Console.WriteLine("\n-- Duw op Enter om terug te keren naar het menu. --");
                         Console.ReadLine();
                         break;
 
@@ -43,7 +43,7 @@ namespace Project1
                         Console.Clear();
                         Console.WriteLine("Geef een zoekterm in om de database te raadplegen:");
                         dier.ZoekOpInput();
-                        Console.WriteLine("Duw op Enter om terug te keren naar het menu.");
+                        Console.WriteLine("\n-- Duw op Enter om terug te keren naar het menu. --");
                         Console.ReadLine();
 
                         break;
@@ -52,7 +52,7 @@ namespace Project1
 
                         Console.Clear();
                         dier.WijzigData();
-                        Console.WriteLine("Duw op Enter om terug te keren naar het menu.");
+                        Console.WriteLine("\n-- Duw op Enter om terug te keren naar het menu. --");
                         Console.ReadLine();
                         break;
 
@@ -60,7 +60,7 @@ namespace Project1
 
                         Console.Clear();
                         dier.VerwijderDier();
-                        Console.WriteLine("Duw op Enter om terug te keren naar het menu.");
+                        Console.WriteLine("\n-- Duw op Enter om terug te keren naar het menu. --");
                         Console.ReadLine();
                         break;
 
@@ -68,7 +68,7 @@ namespace Project1
 
                         Console.Clear();
                         dier.PrintDierenLijst(fileReaderWriter.ReadDataFromFile(fileReaderWriter.PATH_DEAD));
-                        Console.WriteLine("Duw op Enter om terug te keren naar het menu.");
+                        Console.WriteLine("\n-- Duw op Enter om terug te keren naar het menu. --");
                         Console.ReadLine();
                         break;
 
@@ -88,6 +88,7 @@ namespace Project1
                 }
             } while (true);
         }
+
         public void PrintTrein()
         {
             SpeelTreinGeluid();
@@ -141,6 +142,7 @@ namespace Project1
             player.settings.volume = 50;
             player.URL = path + trein;
         }
+
         public void PrintBanner()
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -150,7 +152,7 @@ namespace Project1
          \ \      / / _ \ / _ \|  _ \|  _ \| ____| ____|__  / _ \ / _ \
           \ \ /\ / / | | | | | | |_) | | | |  _| |  _|   / / | | | | | |
            \ V  V /| |_| | |_| |  __/| |_| | |___| |___ / /| |_| | |_| |
-            \_/\_/  \___/ \___/|_|   |____/|_____|_____/____\___/ \___/ 
+            \_/\_/  \___/ \___/|_|   |____/|_____|_____/____\___/ \___/
 ";
 
             Console.WriteLine(banner2);
@@ -159,10 +161,9 @@ namespace Project1
 
         public void PrintMenuSelectie()
         {
-            
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             string menu = @"
-            
+
             ╔══════════════════════════════════════════════════╗
             ║         Welkom in Dierentuin WoopDeeZoo!         ║
             ╠══════════════════════════════════════════════════╣

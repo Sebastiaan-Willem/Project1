@@ -2,3 +2,5 @@ Giraf Bart M 01/01/2010 [voedsel]
 Panda Bessy V 02/12/2019 [bamboe] 05/01/2021 14:38:31
 10 PANDA Po 13/12/2019 00:00:00 1 Safaripark Bamboo, Fruit07/01/2021 12:19:30
 16 EZEL Sebastiaan M 01/01/2000 21 Kinderboerderij [Wortels, Hooi, Stro] 08/01/2021 13:43:23
+37 TEST test M 01/01/2000 21 Aquarium [test] 08/01/2021 15:46:21
+36 TEST test M 12/12/2000 20 Aquarium [test] 08/01/2021 15:51:07

@@ -80,6 +80,10 @@ namespace Project1
             fileReaderWriter.WriteDataToFile(newDier.ToArray());
 
             dierenLijst.Add(dier);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\n-- Het dier werd succesvol opgenomen in onze database! --\n");
+            Console.ResetColor();
+            System.Threading.Thread.Sleep(2000);
         }
 
         public int GetUniekeID()
@@ -145,7 +149,7 @@ namespace Project1
         public void PrintDierMetId(int id)
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine($"{"ID",3} {"Naam",14} {"Soort",10} {"Geboortedatum", 12} {"Leeftijd",8} {"Geslacht",8} {"Habitat",18} {"Dieet",24}\n");
+            Console.WriteLine($"{"ID",3} {"Naam",14} {"Soort",10} {"Geboortedatum",12} {"Leeftijd",8} {"Geslacht",8} {"Habitat",18} {"Dieet",24}\n");
 
             foreach (Dier dier in dierenLijst)
             {
@@ -157,8 +161,20 @@ namespace Project1
 
             Console.WriteLine();
             Console.ResetColor();
-
         }
+
+        public bool LijstBevatDierMetId(int id)
+        {
+            foreach (Dier dier in dierenLijst)
+            {
+                if (dier.ID == id)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public string DierToString(Dier dier)
         {
             string dierAlsString = $"{dier.ID} {dier.Soort} {dier.Naam} {dier.Geslacht} {dier.Geboortedatum.ToString("dd/MM/yyyy")} {dier.Leeftijd} {dier.Habitat} [{dier.Dieet}] ";
@@ -186,7 +202,7 @@ namespace Project1
             {
                 if (DateTime.TryParse(Console.ReadLine(), out DateTime geboortedatum))
                 {
-                    return geboortedatum;                   
+                    return geboortedatum;
                 }
                 else
                 {
@@ -215,15 +231,24 @@ namespace Project1
             do
             {
                 Console.WriteLine("Wat is het geslacht? (M/V/X)");
-                temp = Convert.ToChar(Console.ReadLine().ToUpper());
-                if ((temp == 'M') || (temp == 'V') || (temp == 'X'))
+                bool test = char.TryParse(Console.ReadLine().ToUpper(), out temp);
+                if (test)
                 {
-                    return temp;
+                    if ((temp == 'M') || (temp == 'V') || (temp == 'X'))
+                    {
+                        return temp;
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("-- De gegeven waarde komt niet overeen met de voorgestelde opties. --");
+                        Console.ResetColor();
+                    }
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("--De gegeven input is incorrect, probeer opnieuw:--");
+                    Console.WriteLine("-- Gelieve een correcte waarde in te geven. --");
                     Console.ResetColor();
                 }
             } while (!(temp == 'M' || temp == 'V' || temp == 'X'));
@@ -279,7 +304,7 @@ namespace Project1
             Console.WriteLine("Geef het ID van het dier dat u wenst aan te passen.");
             bool test = int.TryParse(Console.ReadLine(), out int tempID);
 
-            if (test)
+            if (test && LijstBevatDierMetId(tempID))
             {
                 PrintDierMetId(tempID);
                 bool parsable;
@@ -323,7 +348,7 @@ namespace Project1
 
                                 default:
                                     Console.ForegroundColor = ConsoleColor.Red;
-                                    Console.WriteLine("Gelieve een geldige optie te selecteren uit het menu.");
+                                    Console.WriteLine("-- Gelieve een geldige optie te selecteren uit het menu. --");
                                     Console.ResetColor();
                                     break;
                             }
@@ -333,8 +358,16 @@ namespace Project1
                 }
 
                 fileReaderWriter.UpdateDataToFile(dierenLijst.ToArray());
-                Console.WriteLine("De data werd succesvol geupdate!");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("-- De data werd succesvol geupdate! --\n");
+                Console.ResetColor();
                 PrintDierMetId(tempID);
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("-- Geen dier gevonden met ingegeven ID. --");
+                Console.ResetColor();
             }
             //OLD
 
@@ -426,7 +459,7 @@ namespace Project1
                 {
                     gefilterdeLijst.Add(dier);
                 }
-                else if (gezochtgegeven == dier.Geboortedatum.ToString())
+                else if (dier.Geboortedatum.ToString().Contains(gezochtgegeven))
                 {
                     gefilterdeLijst.Add(dier);
                 }
@@ -448,7 +481,7 @@ namespace Project1
                 }
             }
             int meervoud = gefilterdeLijst.Count;
-            Console.WriteLine($"\nEr {(meervoud == 1? "is" : "zijn")} {meervoud} {(meervoud == 1? "resultaat" : "resultaten")} voor uw zoekopdracht:");
+            Console.WriteLine($"\nEr {(meervoud == 1 ? "is" : "zijn")} {meervoud} {(meervoud == 1 ? "resultaat" : "resultaten")} voor uw zoekopdracht:");
             Console.WriteLine();
             PrintDierenLijst(gefilterdeLijst);
         }
