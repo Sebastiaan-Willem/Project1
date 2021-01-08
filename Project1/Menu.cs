@@ -41,7 +41,7 @@ namespace Project1
                     case ConsoleKey.C:
 
                         Console.Clear();
-                        Console.WriteLine("Zoek en hoop dat werkt zonder errors:");
+                        Console.WriteLine("Geef een zoekterm in om de database te raadplegen:");
                         dier.ZoekOpInput();
                         Console.WriteLine("Duw op Enter om terug te keren naar het menu.");
                         Console.ReadLine();

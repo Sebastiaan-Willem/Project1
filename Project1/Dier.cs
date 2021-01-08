@@ -181,7 +181,21 @@ namespace Project1
         public DateTime BepaalGeboortedatum()
         {
             Console.WriteLine("Geef de geboortedatum in: DD/MM/YYYY");
-            return Convert.ToDateTime(Console.ReadLine());
+            bool test = false;
+            do
+            {
+                if (DateTime.TryParse(Console.ReadLine(), out DateTime geboortedatum))
+                {
+                    return geboortedatum;                   
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("--Gelieve een correcte datum in te geven--");
+                    Console.ResetColor();
+                }
+            } while (test == false);
+            return DateTime.Today;
         }
 
         public int BerekenLeeftijd(DateTime geboorteDatum)
