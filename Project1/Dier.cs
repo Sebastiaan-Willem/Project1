@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Project1
 {
     public enum Habitats { Aquarium = 1, Safaripark, Vogelparadijs, Kinderboerderij }
 
-    class Dier
+    internal class Dier
     {
         //------------------------------------------------------------
         //MVP
         //------------------------------------------------------------
 
-        FileReaderWriter fileReaderWriter = new FileReaderWriter();
+        private FileReaderWriter fileReaderWriter = new FileReaderWriter();
         private int id;
 
         public int ID
@@ -21,6 +20,7 @@ namespace Project1
             get { return id; }
             set { id = value; }
         }
+
         public string Soort { get; set; }
         public string Naam { get; set; }
         public DateTime Geboortedatum { get; set; }
@@ -30,11 +30,10 @@ namespace Project1
 
         public string Habitat { get; set; }
 
-        List<Dier> dierenLijst = new List<Dier>();
+        private List<Dier> dierenLijst = new List<Dier>();
 
         public Dier()
         {
-
         }
 
         public Dier(int id, string soort, string naam, char geslacht, DateTime geboortedatum, int leeftijd, string habitat, string dieet)
@@ -48,7 +47,6 @@ namespace Project1
             Habitat = habitat;
             Dieet = dieet;
         }
-
 
         public void VoegDierToe()
         {
@@ -98,29 +96,6 @@ namespace Project1
             return uniekeID + 1;
         }
 
-        //Nuttig?
-        public Dier GetDierMetId(int id)
-        {
-            if (!(dierenLijst.Count == 0))
-            {
-                foreach (Dier dier in dierenLijst)
-                {
-                    if (dier.id == id)
-                    {
-                        return dier;
-                    }
-                }
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Er zitten momenteel geen dieren in deze lijst.");
-                System.Threading.Thread.Sleep(3000);
-                Console.ResetColor();
-            }
-            return null;
-        }
-
         public List<Dier> GetDierenLijst()
         {
             return dierenLijst;
@@ -144,7 +119,6 @@ namespace Project1
             }
         }
 
-
         public void PrintDierenLijst(List<Dier> lijst)
         {
             if (!(lijst.Count == 0))
@@ -165,10 +139,10 @@ namespace Project1
             }
             Console.WriteLine();
         }
-         
+
         public void PrintDierMetId(int id)
         {
-            Console.WriteLine($"{"ID",3} {"Naam",14} {"Soort",10} {"Geboortedatum", 12} {"Leeftijd",8} {"Geslacht",8} {"Habitat",18} {"Dieet",24}\n");
+            Console.WriteLine($"{"ID",3} {"Naam",14} {"Soort",10} {"Geboortedatum",12} {"Leeftijd",8} {"Geslacht",8} {"Habitat",18} {"Dieet",24}\n");
 
             foreach (Dier dier in dierenLijst)
             {
@@ -179,8 +153,8 @@ namespace Project1
             }
 
             Console.WriteLine();
-            
         }
+
         public string DierToString(Dier dier)
         {
             string dierAlsString = $"{dier.ID} {dier.Soort} {dier.Naam} {dier.Geslacht} {dier.Geboortedatum.ToString("dd/MM/yyyy")} {dier.Leeftijd} {dier.Habitat} [{dier.Dieet}] ";
@@ -234,7 +208,6 @@ namespace Project1
                     Console.WriteLine("--De gegeven input is incorrect, probeer opnieuw:--");
                     Console.ResetColor();
                 }
-
             } while (!(temp == 'M' || temp == 'V' || temp == 'X'));
 
             return temp;
@@ -252,14 +225,12 @@ namespace Project1
                     {
                         Habitats myHabitat = (Habitats)HabitatNum;
                         return myHabitat.ToString();
-
                     }
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("--Dit is geen cijfer die overeenstemt met een habitat, probeer opnieuw.--");
                         Console.ResetColor();
-
                     }
                 }
                 else
@@ -267,7 +238,6 @@ namespace Project1
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("--Gelieve een cijfer in te geven.--");
                     Console.ResetColor();
-
                 }
             } while (test == false);
 
@@ -281,17 +251,9 @@ namespace Project1
             return Console.ReadLine();
         }
 
-
         //------------------------------------------------------------
         //EXTRA
         //------------------------------------------------------------
-
-        public double Kosten { get; set; }
-        public string FamilyTree { get; set; }
-        public double Gewicht { get; set; }
-        public double Lengte { get; set; }
-        public DateTime InschrijvingsDatum { get; set; }
-
 
         public void WijzigData()
         {
@@ -319,22 +281,28 @@ namespace Project1
                                 case 1:
                                     dier.Soort = BepaalDiersoort();
                                     break;
+
                                 case 2:
                                     dier.Naam = BepaalEigennaam();
                                     break;
+
                                 case 3:
                                     dier.Geslacht = BepaalGeslacht();
                                     break;
+
                                 case 4:
                                     dier.Geboortedatum = BepaalGeboortedatum();
                                     dier.Leeftijd = BerekenLeeftijd(dier.Geboortedatum);
                                     break;
+
                                 case 5:
                                     dier.Habitat = BepaalHabitat();
                                     break;
+
                                 case 6:
                                     dier.Dieet = BepaalDieet();
                                     break;
+
                                 default:
                                     Console.ForegroundColor = ConsoleColor.Red;
                                     Console.WriteLine("Gelieve een geldige optie te selecteren uit het menu.");
@@ -365,6 +333,7 @@ namespace Project1
             //fileReaderWriter.EditData(tempID, oldData, newData);
             //PrintDierMetId(fileReaderWriter.ReadDataLineFromFile(tempID));
         }
+
         public void VerwijderDier()
         {
             Console.WriteLine("Geef het ID van het dier dat u wenst te verwijderen.");
@@ -390,8 +359,8 @@ namespace Project1
             }
 
             fileReaderWriter.UpdateDataToFile(dierenLijst.ToArray());
-
         }
+
         public void MaakDierenLijstAan()
         {
             List<string> dierenLijstTwee = fileReaderWriter.ReadDataFromFile(fileReaderWriter.PATH_LIST);
@@ -409,25 +378,16 @@ namespace Project1
                 int leeftijd = Convert.ToInt32(dierenInfoArray[5]);
                 string habitat = dierenInfoArray[6];
 
-
                 int openSquare = dier.IndexOf('[');
                 string dieet = dier.Substring(openSquare + 1, dier.Length - (openSquare + 3));
-
 
                 Dier dierobject = new Dier(id, soort, naam, geslacht, geboortedatum, leeftijd, habitat, dieet);
 
                 dierenLijst.Add(dierobject);
-
-
-
             }
 
             dierenLijst = dierenLijst.OrderBy(dier => dier.ID).ToList();
-
         }
-
-        //**************************************************$
-
 
         public void ZoekOpInput()
         {
@@ -472,13 +432,7 @@ namespace Project1
 
             Console.WriteLine($"Er zijn {gefilterdeLijst.Count} resultaten voor uw zoekopdracht:");
             Console.WriteLine();
-
-            //cooler printen
             PrintDierenLijst(gefilterdeLijst);
         }
-
-
     }
-    
 }
-

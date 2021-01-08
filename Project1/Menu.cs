@@ -3,17 +3,17 @@ using WMPLib;
 
 namespace Project1
 {
-    class Menu
+    internal class Menu
     {
         private WindowsMediaPlayer player = new WindowsMediaPlayer();
-        Dier dier = new Dier();
-        FileReaderWriter fileReaderWriter = new FileReaderWriter();
+        private Dier dier = new Dier();
+        private FileReaderWriter fileReaderWriter = new FileReaderWriter();
         private readonly string path = $"C:\\Users\\{Environment.UserName}\\source\\repos\\Project1\\Project1\\sounds\\";
 
         public void PrintMenu()
         {
             dier.MaakDierenLijstAan();
-            //PlayJungleSound();
+            SpeelJungleGeluid();
             do
             {
                 Console.Clear();
@@ -26,88 +26,79 @@ namespace Project1
                 {
                     case ConsoleKey.A:
 
-                            Console.Clear();
-                            dier.VoegDierToe();
+                        Console.Clear();
+                        dier.VoegDierToe();
                         break;
 
                     case ConsoleKey.B:
 
-                            Console.Clear();
-                            dier.PrintDierenLijst(fileReaderWriter.ReadDataFromFile(fileReaderWriter.PATH_LIST));
-                            Console.WriteLine("Duw op Enter om terug te keren naar het menu.");
-                            Console.ReadLine();
+                        Console.Clear();
+                        dier.PrintDierenLijst(fileReaderWriter.ReadDataFromFile(fileReaderWriter.PATH_LIST));
+                        Console.WriteLine("Duw op Enter om terug te keren naar het menu.");
+                        Console.ReadLine();
                         break;
+
                     case ConsoleKey.C:
 
-                        //nieuwe methode zoekfuncties, op basis van ID, naam, soort en habitat?
-                        //evt optie zelf aan te geven op basis van wat??
+                        Console.Clear();
+                        Console.WriteLine("Zoek en hoop dat werkt zonder errors:");
+                        dier.ZoekOpInput();
+                        Console.WriteLine("Duw op Enter om terug te keren naar het menu.");
+                        Console.ReadLine();
 
-                            Console.Clear();
-                            Console.WriteLine("Zoek en hoop dat werkt zonder errors:");
-
-                        //dier.PrintDierMetId(Convert.ToInt32(Console.ReadLine()));
-
-                            dier.ZoekOpInput();
-
-                            Console.WriteLine("Duw op Enter om terug te keren naar het menu.");
-                            Console.ReadLine();
-                       
                         break;
+
                     case ConsoleKey.D:
 
-                            Console.Clear();
-                            dier.WijzigData();
-                            Console.WriteLine("Duw op Enter om terug te keren naar het menu.");
-                            Console.ReadLine();
+                        Console.Clear();
+                        dier.WijzigData();
+                        Console.WriteLine("Duw op Enter om terug te keren naar het menu.");
+                        Console.ReadLine();
                         break;
 
                     case ConsoleKey.E:
 
-                            Console.Clear();
-                            dier.VerwijderDier();
-                            Console.WriteLine("Duw op Enter om terug te keren naar het menu.");
-                            Console.ReadLine();
-                            break;
+                        Console.Clear();
+                        dier.VerwijderDier();
+                        Console.WriteLine("Duw op Enter om terug te keren naar het menu.");
+                        Console.ReadLine();
+                        break;
+
                     case ConsoleKey.F:
 
-                            Console.Clear();
-                            dier.PrintDierenLijst(fileReaderWriter.ReadDataFromFile(fileReaderWriter.PATH_DEAD));
-                            Console.WriteLine("Duw op Enter om terug te keren naar het menu.");
-                            Console.ReadLine();
+                        Console.Clear();
+                        dier.PrintDierenLijst(fileReaderWriter.ReadDataFromFile(fileReaderWriter.PATH_DEAD));
+                        Console.WriteLine("Duw op Enter om terug te keren naar het menu.");
+                        Console.ReadLine();
                         break;
 
                     case ConsoleKey.Q:
 
-                            fileReaderWriter.UpdateDataToFile(dier.GetDierenLijst().ToArray());
-                            Environment.Exit(0);
+                        fileReaderWriter.UpdateDataToFile(dier.GetDierenLijst().ToArray());
+                        Environment.Exit(0);
                         break;
-
 
                     default:
                         Console.ForegroundColor = ConsoleColor.Red;
 
-                        Console.WriteLine("\n\n-- You entered a wrong key! --");
+                        Console.WriteLine("\n\n-- Gelieve een geldige keuze te maken. --");
                         System.Threading.Thread.Sleep(2000);
                         Console.ResetColor();
                         break;
                 }
-
             } while (true);
-         
-            
         }
 
         public void PrintTrein()
         {
-            PlayTrainSound();
+            SpeelTreinGeluid();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             for (int j = 0; j < 15; j++)
             {
-
                 Console.Clear();
 
                 // steam
-                Console.WriteLine("   ...Welcome, press ENTER when you've arrived at...");
+                Console.WriteLine("   ...Welkom, druk op ENTER wanneer u aangekomen bent in...");
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.Write("                  WOOPDEEZ ");
@@ -138,50 +129,37 @@ namespace Project1
             Console.ReadLine();
         }
 
-        public void PlayTrainSound()
+        public void SpeelTreinGeluid()
         {
-            string train = "Train_Horn.mp3";
+            string trein = "Train_Horn.mp3";
             player.settings.volume = 50;
-            player.URL = path + train;
+            player.URL = path + trein;
         }
-        public void PlayJungleSound()
+
+        public void SpeelJungleGeluid()
         {
-            string train = "rainforest_ambience.mp3";
+            string trein = "rainforest_ambience.mp3";
             player.settings.volume = 50;
-            player.URL = path + train;
+            player.URL = path + trein;
         }
 
         public void PrintBanner()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            string banner = @"
-                
-        .--.      .--.    ,-----.        ,-----.    .-------.  ______         .-''-.      .-''-.    ____..--'    ,-----.        ,-----.     
-        |  |_     |  |  .'  .-,  '.    .'  .-,  '.  \  _(`)_ \|    _ `''.   .'_ _   \   .'_ _   \  |        |  .'  .-,  '.    .'  .-,  '.   
-        | _( )_   |  | / ,-.|  \ _ \  / ,-.|  \ _ \ | (_ o._)|| _ | ) _  \ / ( ` )   ' / ( ` )   ' |   .-'  ' / ,-.|  \ _ \  / ,-.|  \ _ \  
-        |(_ o _)  |  |;  \  '_ /  | :;  \  '_ /  | :|  (_,_) /|( ''_'  ) |. (_ o _)  |. (_ o _)  | |.-'.'   /;  \  '_ /  | :;  \  '_ /  | : 
-        | (_,_) \ |  ||  _`,/ \ _/  ||  _`,/ \ _/  ||   '-.-' | . (_) `. ||  (_,_)___||  (_,_)___|    /   _/ |  _`,/ \ _/  ||  _`,/ \ _/  | 
-        |  |/    \|  |: (  '\_/ \   ;: (  '\_/ \   ;|   |     |(_    ._) ''  \   .---.'  \   .---.  .'._( )_ : (  '\_/ \   ;: (  '\_/ \   ; 
-        |  '  /\  `  | \ `'/  \  ) /  \ `'/  \  ) / |   |     |  (_.\.' /  \  `-'    / \  `-'    /.'  (_'o._) \ `'/  \  ) /  \ `'/  \  ) /  
-        |    /  \    |  '. \_/``'.'    '. \_/``'.'  /   )     |       .'    \       /   \       / |    (_,_)|  '. \_/``'.'    '. \_/``'.'   
-        `---'    `---`    '-----'        '-----'    `---'     '-----'`       `'-..-'     `'-..-'  |_________|    '-----'        '-----'     
-                                                                                                                                    
-
-                ";
 
             string banner2 = @"
-         __        _____   ___  ____  ____  _____ _____ ________   ___  
-         \ \      / / _ \ / _ \|  _ \|  _ \| ____| ____|__  / _ \ / _ \ 
+         __        _____   ___  ____  ____  _____ _____ ________   ___
+         \ \      / / _ \ / _ \|  _ \|  _ \| ____| ____|__  / _ \ / _ \
           \ \ /\ / / | | | | | | |_) | | | |  _| |  _|   / / | | | | | |
            \ V  V /| |_| | |_| |  __/| |_| | |___| |___ / /| |_| | |_| |
-            \_/\_/  \___/ \___/|_|   |____/|_____|_____/____\___/ \___/ 
-                                                                
+            \_/\_/  \___/ \___/|_|   |____/|_____|_____/____\___/ \___/
+
 ";
 
             Console.WriteLine(banner2);
             Console.ResetColor();
-            
         }
+
         public void PrintMenuSelectie()
         {
             Console.WriteLine("Welkom in Dierentuin WoopDeeZoo!");
@@ -195,7 +173,5 @@ namespace Project1
             Console.WriteLine("F: Bekijk lijst overleden dieren.");
             Console.WriteLine("Q: Sluit het programma af.");
         }
-
     }
-    
 }

@@ -11,10 +11,8 @@
             fileManager.CreateFile(readerWriter.PATH_DEAD);
 
             Menu menu = new Menu();
-            //menu.PrintTrein();
+            menu.PrintTrein();
             menu.PrintMenu();
-
-
         }
     }
 }
