@@ -169,7 +169,9 @@ namespace Project1
             {
                 if(dier.ID == id)
                 {
-                    Console.WriteLine($"#{dier.ID} || <<{dier.Naam}>> is een <<{dier.Leeftijd}>> jaar oude <<{dier.Soort}>>. Hij/zij/het({dier.Geslacht}) is terug te vinden in het/de <<{dier.Habitat}>> en eet graag <<{dier.Dieet}>>.");
+                    
+                    Console.WriteLine($"#{dier.ID} || <<{dier.Naam}>> is een <<{dier.Leeftijd}>> jaar oude <<{dier.Soort}>>. " +
+                        $"({(dier.Geslacht == 'M'? "Hij" : "Zij")}) is terug te vinden in <<{(dier.Habitat == "Kinderboerderij"? "De" : "Het")}>> en eet graag <<{dier.Dieet}>>.");
                 }
             }           
             
