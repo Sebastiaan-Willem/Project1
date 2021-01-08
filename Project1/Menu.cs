@@ -47,7 +47,7 @@ namespace Project1
 
                         //dier.PrintDierMetId(Convert.ToInt32(Console.ReadLine()));
 
-                            dier.TestSearchMethode();
+                            dier.ZoekOpInput();
 
                             Console.WriteLine("Duw op Enter om terug te keren naar het menu.");
                             Console.ReadLine();
@@ -194,7 +194,7 @@ namespace Project1
             Console.WriteLine("***********************************************");
             Console.WriteLine("A: Voeg een dier toe aan de database.");
             Console.WriteLine("B: Bekijk de database van dierentuin WoopDeeZoo.");
-            Console.WriteLine("C: Zoekfuncties.");
+            Console.WriteLine("C: Zoeken.");
             Console.WriteLine("D: Wijzig Data van een dier.");
             Console.WriteLine("E: Verwijderen van een dier.");
             Console.WriteLine("F: Bekijk lijst overleden dieren.");

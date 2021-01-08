@@ -145,13 +145,15 @@ namespace Project1
         }
 
 
-        public void PrintDierenLijst(List<Dier> GefilterdeLijst)
+        public void PrintDierenLijst(List<Dier> lijst)
         {
-            if (!(GefilterdeLijst.Count == 0))
+            if (!(lijst.Count == 0))
             {
-                foreach (Dier dier in GefilterdeLijst)
+                Console.WriteLine($"{"ID",3} {"Naam",14} {"Soort",10} {"Geboortedatum",12} {"Leeftijd",8} {"Geslacht",8} {"Habitat",18} {"Dieet",24}\n");
+
+                foreach (Dier dier in lijst)
                 {
-                    Console.WriteLine($"#{dier.ID} || {dier.Naam} is een {dier.Leeftijd} jaar oude {dier.Soort}. Hij/zij/het({dier.Geslacht}) is terug te vinden in het/de {dier.Habitat} en eet graag {dier.Dieet}.");
+                    Console.WriteLine($"{dier.ID,3} {dier.Naam,14} {dier.Soort,10} {dier.Geboortedatum,12:dd/MM/yyyy} {dier.Leeftijd,8} {dier.Geslacht,8} {dier.Habitat,18} {dier.Dieet,25}");
                 }
             }
             else
@@ -161,6 +163,7 @@ namespace Project1
                 System.Threading.Thread.Sleep(3000);
                 Console.ResetColor();
             }
+            Console.WriteLine();
         }
          
         public void PrintDierMetId(int id)
@@ -173,11 +176,6 @@ namespace Project1
                 {
                     Console.WriteLine($"{dier.ID,3} {dier.Naam,14} {dier.Soort,10} {dier.Geboortedatum,12:dd/MM/yyyy} {dier.Leeftijd,8} {dier.Geslacht,8} {dier.Habitat,18} {dier.Dieet,25}");
                 }
-
-
-                Console.WriteLine($"{dier.ID,3} {dier.Naam,14} {dier.Soort,10} {dier.Geboortedatum,12:dd/MM/yyyy} {dier.Leeftijd,8} {dier.Geslacht,8} {dier.Habitat,18} {dier.Dieet,25}");
-
-
             }
 
             Console.WriteLine();
@@ -431,7 +429,7 @@ namespace Project1
         //**************************************************$
 
 
-        public void TestSearchMethode()
+        public void ZoekOpInput()
         {
             string gezochtgegeven = Console.ReadLine();
             List<Dier> gefilterdeLijst = new List<Dier>();
