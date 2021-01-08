@@ -162,8 +162,29 @@ namespace Project1
                 Console.ResetColor();
             }
         }
-
-        
+         
+        public void PrintDierMetId(int id)
+        {
+            foreach (Dier dier in dierenLijst)
+            {
+                if(dier.ID == id)
+                {
+                    string vnw;
+                    if(dier.Geslacht == 'X')
+                    {
+                        vnw = "Het";
+                    }
+                    else
+                    {
+                        vnw = (dier.Geslacht == 'M' ? "Hij" : "Zij");
+                    }
+                    
+                    Console.WriteLine($"#{dier.ID} || {dier.Naam} is een {dier.Leeftijd} jaar oude {dier.Soort}. " +
+                        $"{vnw} is terug te vinden in {(dier.Habitat == "Kinderboerderij" ? "de" : "het")} {dier.Habitat} en eet graag {dier.Dieet}.");
+                }
+            }           
+            
+        }
         public string DierToString(Dier dier)
         {
             string dierAlsString = $"{dier.ID} {dier.Soort} {dier.Naam} {dier.Geslacht} {dier.Geboortedatum.ToString("dd/MM/yyyy")} {dier.Leeftijd} {dier.Habitat} [{dier.Dieet}] ";

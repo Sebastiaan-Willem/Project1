@@ -7,3 +7,4 @@
 27 GIRAF Giel V 01/02/2003 17 Safaripark [bladeren] 
 28 CHIMPANSEE Ricky M 02/05/2017 3 Safaripark [bananen, nootjes] 
 29 PANDA Zhu M 01/01/1980 41 Kinderboerderij [Bamboo] 
+30 CLOWNVIS Nemo X 08/01/2018 3 Aquarium [Visseneten] 
