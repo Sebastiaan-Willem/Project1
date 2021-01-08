@@ -430,16 +430,6 @@ namespace Project1
 
         //**************************************************$
 
-        public void PrintDierMetId(int id)
-        {
-            foreach (Dier dier in dierenLijst)
-            {
-                if (dier.ID == id)
-                {
-                    Console.WriteLine($"#{dier.ID} || <<{dier.Naam}>> is een <<{dier.Leeftijd}>> jaar oude <<{dier.Soort}>>. Hij/zij/het({dier.Geslacht}) is terug te vinden in het/de <<{dier.Habitat}>> en eet graag <<{dier.Dieet}>>.");
-                }
-            }
-        }
 
         public void TestSearchMethode()
         {
