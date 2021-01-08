@@ -147,6 +147,7 @@ namespace Project1
 
         public void PrintDierenLijst(List<Dier> lijst)
         {
+            Console.ForegroundColor = ConsoleColor.Cyan;
             if (!(lijst.Count == 0))
             {
                 Console.WriteLine($"{"ID",3} {"Naam",14} {"Soort",10} {"Geboortedatum",12} {"Leeftijd",8} {"Geslacht",8} {"Habitat",18} {"Dieet",24}\n");
@@ -164,10 +165,12 @@ namespace Project1
                 Console.ResetColor();
             }
             Console.WriteLine();
+            Console.ResetColor();
         }
          
         public void PrintDierMetId(int id)
         {
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine($"{"ID",3} {"Naam",14} {"Soort",10} {"Geboortedatum", 12} {"Leeftijd",8} {"Geslacht",8} {"Habitat",18} {"Dieet",24}\n");
 
             foreach (Dier dier in dierenLijst)
@@ -179,7 +182,8 @@ namespace Project1
             }
 
             Console.WriteLine();
-            
+            Console.ResetColor();
+
         }
         public string DierToString(Dier dier)
         {
@@ -444,7 +448,7 @@ namespace Project1
                 {
                     gefilterdeLijst.Add(dier);
                 }
-                else if (gezochtgegeven == dier.Naam)
+                else if (gezochtgegeven.ToUpper() == dier.Naam.ToUpper())
                 {
                     gefilterdeLijst.Add(dier);
                 }
@@ -469,8 +473,8 @@ namespace Project1
                     gefilterdeLijst.Add(dier);
                 }
             }
-
-            Console.WriteLine($"Er zijn {gefilterdeLijst.Count} resultaten voor uw zoekopdracht:");
+            int meervoud = gefilterdeLijst.Count;
+            Console.WriteLine($"\nEr {(meervoud == 1? "is" : "zijn")} {meervoud} {(meervoud == 1? "resultaat" : "resultaten")} voor uw zoekopdracht:");
             Console.WriteLine();
 
             //cooler printen

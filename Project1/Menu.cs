@@ -43,7 +43,7 @@ namespace Project1
                         //evt optie zelf aan te geven op basis van wat??
 
                             Console.Clear();
-                            Console.WriteLine("Zoek en hoop dat werkt zonder errors:");
+                            Console.WriteLine("Geef een zoekterm in om de database te raadplegen:");
 
                         //dier.PrintDierMetId(Convert.ToInt32(Console.ReadLine()));
 
@@ -86,7 +86,7 @@ namespace Project1
                     default:
                         Console.ForegroundColor = ConsoleColor.Red;
 
-                        Console.WriteLine("\n\n-- You entered a wrong key! --");
+                        Console.WriteLine("\n\n             -- Gelieve een geldige keuze te maken! --");
                         System.Threading.Thread.Sleep(2000);
                         Console.ResetColor();
                         break;
@@ -96,7 +96,6 @@ namespace Project1
          
             
         }
-
         public void PrintTrein()
         {
             PlayTrainSound();
@@ -137,7 +136,6 @@ namespace Project1
             Console.ResetColor();
             Console.ReadLine();
         }
-
         public void PlayTrainSound()
         {
             string train = "Train_Horn.mp3";
@@ -150,10 +148,9 @@ namespace Project1
             player.settings.volume = 50;
             player.URL = path + train;
         }
-
         public void PrintBanner()
         {
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Gray;
             string banner = @"
                 
         .--.      .--.    ,-----.        ,-----.    .-------.  ______         .-''-.      .-''-.    ____..--'    ,-----.        ,-----.     
@@ -175,7 +172,6 @@ namespace Project1
           \ \ /\ / / | | | | | | |_) | | | |  _| |  _|   / / | | | | | |
            \ V  V /| |_| | |_| |  __/| |_| | |___| |___ / /| |_| | |_| |
             \_/\_/  \___/ \___/|_|   |____/|_____|_____/____\___/ \___/ 
-                                                                
 ";
 
             Console.WriteLine(banner2);
@@ -184,16 +180,27 @@ namespace Project1
         }
         public void PrintMenuSelectie()
         {
-            Console.WriteLine("Welkom in Dierentuin WoopDeeZoo!");
-            Console.WriteLine("Gelieve een optie te selecteren:");
-            Console.WriteLine("***********************************************");
-            Console.WriteLine("A: Voeg een dier toe aan de database.");
-            Console.WriteLine("B: Bekijk de database van dierentuin WoopDeeZoo.");
-            Console.WriteLine("C: Zoeken.");
-            Console.WriteLine("D: Wijzig Data van een dier.");
-            Console.WriteLine("E: Verwijderen van een dier.");
-            Console.WriteLine("F: Bekijk lijst overleden dieren.");
-            Console.WriteLine("Q: Sluit het programma af.");
+            
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            string menu = @"
+            
+            ╔══════════════════════════════════════════════════╗
+            ║         Welkom in Dierentuin WoopDeeZoo!         ║
+            ╠══════════════════════════════════════════════════╣
+            ║ Gelieve een optie te selecteren:                 ║
+            ║ ************************************************ ║
+            ║ A: Voeg een dier toe aan de database.            ║
+            ║ B: Bekijk de database van dierentuin WoopDeeZoo. ║
+            ║ C: Zoeken.                                       ║
+            ║ D: Wijzig Data van een dier.                     ║
+            ║ E: Verwijderen van een dier.                     ║
+            ║ F: Bekijk de database van overleden dieren.      ║
+            ║ ------------------------------------------------ ║
+            ║ Q: Sluit het programma af.                       ║
+            ╚══════════════════════════════════════════════════╝
+        ";
+            Console.WriteLine(menu);
+            Console.ResetColor();
         }
 
     }
