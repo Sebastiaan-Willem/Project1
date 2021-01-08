@@ -13,7 +13,7 @@ namespace Project1
         public void PrintMenu()
         {
             dier.MaakDierenLijstAan();
-            PlayJungleSound();
+            //PlayJungleSound();
             do
             {
                 Console.Clear();
@@ -148,7 +148,7 @@ namespace Project1
 
         public void PrintBanner()
         {
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.ForegroundColor = ConsoleColor.Green;
             string banner = @"
                 
         .--.      .--.    ,-----.        ,-----.    .-------.  ______         .-''-.      .-''-.    ____..--'    ,-----.        ,-----.     
@@ -164,7 +164,16 @@ namespace Project1
 
                 ";
 
-            Console.WriteLine(banner);
+            string banner2 = @"
+         __        _____   ___  ____  ____  _____ _____ ________   ___  
+         \ \      / / _ \ / _ \|  _ \|  _ \| ____| ____|__  / _ \ / _ \ 
+          \ \ /\ / / | | | | | | |_) | | | |  _| |  _|   / / | | | | | |
+           \ V  V /| |_| | |_| |  __/| |_| | |___| |___ / /| |_| | |_| |
+            \_/\_/  \___/ \___/|_|   |____/|_____|_____/____\___/ \___/ 
+                                                                
+";
+
+            Console.WriteLine(banner2);
             Console.ResetColor();
             
         }
