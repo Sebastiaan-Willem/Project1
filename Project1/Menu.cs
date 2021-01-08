@@ -39,11 +39,16 @@ namespace Project1
                         break;
                     case ConsoleKey.C:
 
-                        //nieuwe methode zoekfuncties, op basis van ID, naam en habitat
+                        //nieuwe methode zoekfuncties, op basis van ID, naam, soort en habitat?
+                        //evt optie zelf aan te geven op basis van wat??
 
                             Console.Clear();
-                            Console.WriteLine("Geef het ID van het dier dat u wenst op te vragen.");
-                            dier.PrintDierMetId(Convert.ToInt32(Console.ReadLine()));
+                            Console.WriteLine("Zoek en hoop dat werkt zonder errors:");
+
+                        //dier.PrintDierMetId(Convert.ToInt32(Console.ReadLine()));
+
+                            dier.TestSearchMethode();
+
                             Console.WriteLine("Duw op Enter om terug te keren naar het menu.");
                             Console.ReadLine();
                        
@@ -91,6 +96,11 @@ namespace Project1
          
             
         }
+
+
+        
+
+
 
         public void PrintTrein()
         {
@@ -174,8 +184,8 @@ namespace Project1
             Console.WriteLine("Gelieve een optie te selecteren:");
             Console.WriteLine("***********************************************");
             Console.WriteLine("A: Voeg een dier toe aan de database.");
-            Console.WriteLine("B: Bekijk de database van dierentuin Ikweetgeennaam.");
-            Console.WriteLine("C: Zoekfuncties");
+            Console.WriteLine("B: Bekijk de database van dierentuin WoopDeeZoo.");
+            Console.WriteLine("C: Zoekfuncties.");
             Console.WriteLine("D: Wijzig Data van een dier.");
             Console.WriteLine("E: Verwijderen van een dier.");
             Console.WriteLine("F: Bekijk lijst overleden dieren.");
