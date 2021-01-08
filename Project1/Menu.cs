@@ -97,11 +97,6 @@ namespace Project1
             
         }
 
-
-        
-
-
-
         public void PrintTrein()
         {
             PlayTrainSound();
