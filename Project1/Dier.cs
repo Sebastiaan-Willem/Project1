@@ -165,24 +165,22 @@ namespace Project1
          
         public void PrintDierMetId(int id)
         {
+            Console.WriteLine($"{"ID",3} {"Naam",14} {"Soort",10} {"Geboortedatum", 12} {"Leeftijd",8} {"Geslacht",8} {"Habitat",18} {"Dieet",24}\n");
+
             foreach (Dier dier in dierenLijst)
             {
-                if(dier.ID == id)
+                if (dier.ID == id)
                 {
-                    string vnw;
-                    if(dier.Geslacht == 'X')
-                    {
-                        vnw = "Het";
-                    }
-                    else
-                    {
-                        vnw = (dier.Geslacht == 'M' ? "Hij" : "Zij");
-                    }
-                    
-                    Console.WriteLine($"#{dier.ID} || {dier.Naam} is een {dier.Leeftijd} jaar oude {dier.Soort}. " +
-                        $"{vnw} is terug te vinden in {(dier.Habitat == "Kinderboerderij" ? "de" : "het")} {dier.Habitat} en eet graag {dier.Dieet}.");
+                    Console.WriteLine($"{dier.ID,3} {dier.Naam,14} {dier.Soort,10} {dier.Geboortedatum,12:dd/MM/yyyy} {dier.Leeftijd,8} {dier.Geslacht,8} {dier.Habitat,18} {dier.Dieet,25}");
                 }
-            }           
+
+
+                Console.WriteLine($"{dier.ID,3} {dier.Naam,14} {dier.Soort,10} {dier.Geboortedatum,12:dd/MM/yyyy} {dier.Leeftijd,8} {dier.Geslacht,8} {dier.Habitat,18} {dier.Dieet,25}");
+
+
+            }
+
+            Console.WriteLine();
             
         }
         public string DierToString(Dier dier)
